@@ -61,7 +61,7 @@ function formatUptime(uptimeMilliseconds) {
 
 
 function getLastCommitDate() {
-  const command = `git log -1 --format=%cd --date=format:"%d.%m.%Y" --all`;
+  const command = `git log -1 --format= %cd --date=format:"%d.%m.%Y" --all`;
   const lastCommitDate = execSync(command, { encoding: 'utf-8' });
   return lastCommitDate.trim();
 }
