@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require("@discordjs/builders");
-const { botVersion, status, lastUpdate, totalCommands } = require('../../../config.json')
+const { botVersion, status, totalCommands } = require('../../../config.json')
 const { version, Client, Interaction } = require('discord.js')
+const { execSync } = require('child_process');
 
 module.exports = {
   name: 'bot-info',
@@ -20,9 +21,10 @@ module.exports = {
 
       const ping = reply.createdTimestamp - interaction.createdTimestamp;
       const uptime = formatUptime(client.uptime)
+      const lastUpdatedDate = getLastCommitDate();
       const totalMembers = client.guilds.cache.reduce((a, b) => a + b.memberCount, 0);
 
-      const description = `\`\`\`fix\nDeveloper:   aidhaadil\nStatus:      ${status}\nLanguage:    JavaScript\nCreated on:  ${client.user.createdAt.toUTCString()}\nLast update: ${lastUpdate}\`\`\``;
+      const description = `\`\`\`fix\nDeveloper:   aidhaadil\nStatus:      ${status}\nLanguage:    JavaScript\nCreated on:  ${client.user.createdAt.toUTCString()}\nLast update: ${lastUpdatedDate}\`\`\``;
       
       const pingField = `\`\`\`fix\nPing:   ${ping} ms\nWS:     ${client.ws.ping} ms\nUptime: ${uptime}\nNode:   ${process.version}\nDJS:    v${version}\`\`\``;
       const statsField = `\`\`\`fix\nBot ID: ${client.user.id}\nBot Version: v${botVersion}\nServers: ${client.guilds.cache.size}\nUsers: ${totalMembers}\nCommands: ${totalCommands}\`\`\``;
@@ -56,3 +58,12 @@ function formatUptime(uptimeMilliseconds) {
   
     return `${days}d ${hours}h ${minutes}m ${secondsLeft}s`;
   }
+
+
+function getLastCommitDate() {
+  const command = `git log -1 --format='%cd' --date=format:"%d.%m.%Y" --all`;
+  const lastCommitDate = execSync(command, { encoding: 'utf-8' });
+  return lastCommitDate.trim();
+}
+  
+  
