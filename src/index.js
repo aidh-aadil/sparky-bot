@@ -1,4 +1,4 @@
-const config = require('../config.json');
+require('dotenv').config();
 const { Client, IntentsBitField } = require('discord.js')
 const eventHandler = require('./handlers/eventHandler')
 
@@ -14,7 +14,8 @@ const client = new Client({
 
 async function connect() {
   try {
-    client.login(config.token)
+    client.login(process.env.BOT_TOKEN
+      )
 
     eventHandler(client)
 
