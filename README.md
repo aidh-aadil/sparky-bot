@@ -5,7 +5,18 @@
 
 ### How you can use my code: 
 1. Clone my repository
+```
+git clone https://github.com/aidhaadil/sparky-bot.git
+```
 2. Install the dependencies (discord.js, dotenv, nodemon etc.)
+```
+npm install discord.js dotenv nodemon
+```
 3. Create a .env file and add your bot token as `BOT_TOKEN`
-4. Run `npm start` in your terminal. There you go!
+4. Run the bot
+```
+npm start
+```
+
+- There you go! If there is any bug or any suggestion, please open an issue or contact me in the support server. You can also open a PR if you have any new features to add to this bot.
 
