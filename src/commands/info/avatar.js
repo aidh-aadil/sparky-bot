@@ -40,9 +40,7 @@ module.exports = {
                     const extension = extensionParts[extensionParts.length - 1]; 
                     
                     return extension
-                } else {
-                    return 
-                }
+                } 
             }
 
             function getDescription() {
