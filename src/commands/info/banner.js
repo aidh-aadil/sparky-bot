@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('@discordjs/builders')
-const { ApplicationCommandOptionType, Client, Interaction, Embed } = require('discord.js')
+const { ApplicationCommandOptionType, Client, Interaction } = require('discord.js')
 
 module.exports = {
     name: 'banner',
