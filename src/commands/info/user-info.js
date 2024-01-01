@@ -3,7 +3,7 @@ const { Client, Interaction, ApplicationCommandOptionType } = require("discord.j
 
 module.exports = {
     name: 'user-info',
-    description: 'View some information about a user',
+    description: 'View some information about user',
 
     options: [
         {
