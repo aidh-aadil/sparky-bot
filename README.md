@@ -12,7 +12,11 @@ git clone https://github.com/aidhaadil/sparky-bot.git
 ```
 npm install discord.js dotenv nodemon
 ```
-3. Create a .env file and add your bot token as `BOT_TOKEN`
+3. Create a .env file and add your bot token
+### File: `.env`
+```
+BOT_TOKEN = "your-bot-token"
+```
 4. Run the bot
 ```
 npm start
