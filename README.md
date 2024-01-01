@@ -16,7 +16,6 @@ npm install discord.js dotenv nodemon
 <-- .env -->
 ```
 BOT_TOKEN = "your-bot-token"
-```
 4. Run the bot
 ```
 npm start
