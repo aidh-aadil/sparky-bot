@@ -21,7 +21,7 @@
 
 ### Economy system
 
-- `daily`: Collect daily rewards
+- `daily` : Collect daily rewards
 
 ## How you can use my code:
 
