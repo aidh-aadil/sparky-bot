@@ -1,5 +1,5 @@
 const { Events, ActivityType } = require('discord.js')
-const { botVersion } = require('../../config.json');
+const { botVersion } = require('../../config.json')
 
 module.exports = {
   name: Events.ClientReady,

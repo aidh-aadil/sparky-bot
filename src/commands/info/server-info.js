@@ -1,50 +1,50 @@
-const { EmbedBuilder } = require("@discordjs/builders");
+const { EmbedBuilder } = require('@discordjs/builders')
 
 module.exports = {
   data: {
-    name: "server-info",
-    description: "View some information about this server",
+    name: 'server-info',
+    description: 'View some information about this server',
   },
 
   async execute(interaction) {
     try {
       if (interaction.guild) {
-        await interaction.deferReply();
+        await interaction.deferReply()
 
-        const guildOwner = interaction.guild.fetchOwner();
+        const guildOwner = interaction.guild.fetchOwner()
 
         const description = `\`\`\`fix\nOwner:         ${
           (await guildOwner).user.username
         }\nServer ID:     ${
           interaction.guildId
-        }\nCreation date: ${interaction.guild.createdAt.toUTCString()}\`\`\``;
+        }\nCreation date: ${interaction.guild.createdAt.toUTCString()}\`\`\``
 
         function getVerificationLevel(lvl) {
           if (lvl === 1) {
-            return "Low";
+            return 'Low'
           }
           if (lvl == 2) {
-            return "Medium";
+            return 'Medium'
           }
 
           if (lvl == 3) {
-            return "High";
+            return 'High'
           }
 
           if (lvl == 4) {
-            return "Highest";
+            return 'Highest'
           }
         }
 
         function getExplicitContentFilterLevel(lvl) {
           if (lvl === 0) {
-            return "Disabled";
+            return 'Disabled'
           }
           if (lvl === 1) {
-            return "Only for members without roles";
+            return 'Only for members without roles'
           }
           if (lvl === 2) {
-            return "All members";
+            return 'All members'
           }
         }
 
@@ -54,49 +54,49 @@ module.exports = {
           .setDescription(description)
           .addFields(
             {
-              name: "Members",
+              name: 'Members',
               value: `${interaction.guild.memberCount}`,
               inline: true,
             },
             {
-              name: "Roles",
+              name: 'Roles',
               value: `${interaction.guild.roles.cache.size}`,
               inline: true,
             },
             {
-              name: "Channels and categories",
+              name: 'Channels and categories',
               value: `${interaction.guild.channels.cache.size}`,
               inline: true,
             },
             {
-              name: "Boosts",
+              name: 'Boosts',
               value: `${interaction.guild.premiumSubscriptionCount}`,
               inline: true,
             },
             {
-              name: "Image scan",
+              name: 'Image scan',
               value: `${getExplicitContentFilterLevel(
                 interaction.guild.explicitContentFilter
               )}`,
               inline: true,
             },
             {
-              name: "Verification lvl",
+              name: 'Verification lvl',
               value: `${getVerificationLevel(
                 interaction.guild.verificationLevel
               )}`,
               inline: true,
             }
-          );
+          )
 
         await interaction.editReply({
           embeds: [embed],
-        });
+        })
       } else {
-        interaction.editReply("You can only use this command in a server");
+        interaction.editReply('You can only use this command in a server')
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   },
-};
+}

@@ -2,23 +2,23 @@ const {
   ApplicationCommandOptionType,
   PermissionFlagsBits,
   EmbedBuilder,
-} = require("discord.js");
+} = require('discord.js')
 
 module.exports = {
   data: {
-    name: "warn",
-    description: "Warn an user",
+    name: 'warn',
+    description: 'Warn an user',
 
     options: [
       {
-        name: "user",
-        description: "Select a user to warn",
+        name: 'user',
+        description: 'Select a user to warn',
         type: ApplicationCommandOptionType.Mentionable,
         required: true,
       },
       {
-        name: "reason",
-        description: "Reason for the warning",
+        name: 'reason',
+        description: 'Reason for the warning',
         type: ApplicationCommandOptionType.String,
         required: false,
       },
@@ -30,50 +30,48 @@ module.exports = {
 
   async execute(interaction) {
     try {
-      const targetUserID = interaction.options.get("user")?.value;
+      const targetUserID = interaction.options.get('user')?.value
       const reason =
-        interaction.options.get("reason")?.value || "No reason provided.";
+        interaction.options.get('reason')?.value || 'No reason provided.'
 
-      const targetUser = await interaction.guild.members.fetch(targetUserID);
+      const targetUser = await interaction.guild.members.fetch(targetUserID)
 
-      await interaction.deferReply();
+      await interaction.deferReply()
 
       if (!targetUser) {
-        await interaction.editReply(
-          `Looks like that user isn't in this server`
-        );
-        return;
+        await interaction.editReply(`Looks like that user isn't in this server`)
+        return
       }
 
       if (targetUser.id == interaction.member.id) {
-        await interaction.editReply(`You cannot warn yourself. LMAO!`);
-        return;
+        await interaction.editReply(`You cannot warn yourself. LMAO!`)
+        return
       }
 
       if (targetUser.id === interaction.guild.ownerId) {
         await interaction.editReply(
           `You are not allowed to warn that user. They are the server owner`
-        );
-        return;
+        )
+        return
       }
 
-      const targetUserRolePosition = targetUser.roles.highest.position;
-      const requestUserRolePosition = interaction.member.roles.highest.position;
+      const targetUserRolePosition = targetUser.roles.highest.position
+      const requestUserRolePosition = interaction.member.roles.highest.position
       const botRolePosition =
-        interaction.guild.members.me.roles.highest.position;
+        interaction.guild.members.me.roles.highest.position
 
       if (targetUserRolePosition >= requestUserRolePosition) {
         await interaction.editReply(
-          "You cannot warn someone higher than or equal to you."
-        );
-        return;
+          'You cannot warn someone higher than or equal to you.'
+        )
+        return
       }
 
       if (targetUserRolePosition >= botRolePosition) {
         await interaction.editReply(
-          "I cannot warn someone higher than or equal to me."
-        );
-        return;
+          'I cannot warn someone higher than or equal to me.'
+        )
+        return
       }
 
       const embed = new EmbedBuilder()
@@ -81,14 +79,14 @@ module.exports = {
         .setDescription(
           `\nReason: ${reason}\nServer: ${interaction.guild.name}\nModerator: <@${interaction.member.id}>`
         )
-        .setTimestamp();
+        .setTimestamp()
 
       await interaction.editReply({
         content: `**${targetUser}, you have been warned!**`,
         embeds: [embed],
-      });
+      })
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   },
-};
+}
