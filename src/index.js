@@ -5,9 +5,10 @@ const {
   ActivityType,
   Collection,
 } = require("discord.js");
-const { token, botVersion } = require("../config.json");
+const { botVersion } = require("../config.json");
 const fs = require("node:fs");
 const path = require("node:path");
+require('dotenv').config()
 
 const client = new Client({
   intents: [
@@ -80,4 +81,4 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-client.login(token);
+client.login(process.env.BOT_TOKEN);
