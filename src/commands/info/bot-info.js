@@ -1,69 +1,65 @@
 const { EmbedBuilder } = require("@discordjs/builders");
-const { botVersion, status, totalCommands } = require('../../../config.json')
-const { version, Client, Interaction } = require('discord.js')
-const { execSync } = require('child_process');
+const { botVersion, status, totalCommands } = require("../../../config.json");
+const { version } = require("discord.js");
+const { execSync } = require("child_process");
 
 module.exports = {
-  name: 'bot-info',
-  description: 'View some information about the bot',
+  data: {
+    name: "bot-info",
+    description: "View some information about the bot",
+  },
 
-  /**
-   * 
-   * @param {Client} client 
-   * @param {Interaction} interaction 
-   */
-
-  callback: async (client, interaction) => {
+  async execute(interaction) {
     try {
-      await interaction.deferReply();
-      
-      const reply = await interaction.fetchReply();
+      const sent = await interaction.deferReply({ fetchReply: true });
+      const uptime = formatUptime(interaction.client.uptime);
+      // const lastUpdatedDate = getLastCommitDate();
+      const totalMembers = interaction.client.guilds.cache.reduce(
+        (a, b) => a + b.memberCount,
+        0
+      );
 
-      const ping = reply.createdTimestamp - interaction.createdTimestamp;
-      const uptime = formatUptime(client.uptime)
-      const lastUpdatedDate = getLastCommitDate();
-      const totalMembers = client.guilds.cache.reduce((a, b) => a + b.memberCount, 0);
+      const description = `\`\`\`fix\nDeveloper:   aidhaadil\nStatus:      ${status}\nLanguage:    JavaScript\nCreated on:  ${interaction.client.user.createdAt.toUTCString()}\nLast update: 02.01.2023\`\`\``;
 
-      const description = `\`\`\`fix\nDeveloper:   aidhaadil\nStatus:      ${status}\nLanguage:    JavaScript\nCreated on:  ${client.user.createdAt.toUTCString()}\nLast update: ${lastUpdatedDate}\`\`\``;
-      
-      const pingField = `\`\`\`fix\nPing:   ${ping} ms\nWS:     ${client.ws.ping} ms\nUptime: ${uptime}\nNode:   ${process.version}\nDJS:    v${version}\`\`\``;
-      const statsField = `\`\`\`fix\nBot ID: ${client.user.id}\nBot Version: v${botVersion}\nServers: ${client.guilds.cache.size}\nUsers: ${totalMembers}\nCommands: ${totalCommands}\`\`\``;
+      const pingField = `\`\`\`fix\nPing:   ${
+        sent.createdTimestamp - interaction.createdTimestamp
+      } ms\nWS:     ${
+        interaction.client.ws.ping
+      } ms\nUptime: ${uptime}\nNode:   ${
+        process.version
+      }\nDJS:    v${version}\`\`\``;
+      const statsField = `\`\`\`fix\nBot ID: ${interaction.client.user.id}\nBot Version: v${botVersion}\nServers: ${interaction.client.guilds.cache.size}\nUsers: ${totalMembers}\nCommands: ${totalCommands}\`\`\``;
 
       const embed = new EmbedBuilder()
-        .setTitle('Bot Info')
+        .setTitle("Bot Info")
         .setColor(0x9b59b6)
         .setDescription(description)
         .addFields(
-            {name: 'Ping',  value: pingField, inline: true},
-            {name: 'Stats', value: statsField, inline: true}
-        )
-        
-       await interaction.editReply({
-        embeds: [embed]
-        });
+          { name: "Ping", value: pingField, inline: true },
+          { name: "Stats", value: statsField, inline: true }
+        );
 
+      await interaction.editReply({
+        embeds: [embed],
+      });
     } catch (error) {
-      await interaction.editReply('Oops! There was an error.')
-      console.log(error)
+      console.log(error);
     }
   },
 };
 
 function formatUptime(uptimeMilliseconds) {
-    const seconds = Math.floor(uptimeMilliseconds / 1000);
-    const days = Math.floor(seconds / 86400);
-    const hours = Math.floor((seconds % 86400) / 3600);
-    const minutes = Math.floor(((seconds % 86400) % 3600) / 60);
-    const secondsLeft = ((seconds % 86400) % 3600) % 60;
-  
-    return `${days}d ${hours}h ${minutes}m ${secondsLeft}s`;
-  }
+  const seconds = Math.floor(uptimeMilliseconds / 1000);
+  const days = Math.floor(seconds / 86400);
+  const hours = Math.floor((seconds % 86400) / 3600);
+  const minutes = Math.floor(((seconds % 86400) % 3600) / 60);
+  const secondsLeft = ((seconds % 86400) % 3600) % 60;
 
-
-function getLastCommitDate() {
-  const command = `git log -1 --format="%cd" --date=format:"%d.%m.%Y" --all`;
-  const lastCommitDate = execSync(command, { encoding: 'utf-8' });
-  return lastCommitDate.trim();
+  return `${days}d ${hours}h ${minutes}m ${secondsLeft}s`;
 }
-  
-  
+
+// function getLastCommitDate() {
+// const command = `git log -1 --format="%cd" --date=format:"%d.%m.%Y" --all`;
+// const lastCommitDate = execSync(command, { encoding: 'utf-8' });
+// return lastCommitDate.trim();
+//}

@@ -1,25 +1,21 @@
 const { EmbedBuilder } = require('@discordjs/builders')
-const { ApplicationCommandOptionType, Client, Interaction } = require('discord.js')
+const { ApplicationCommandOptionType } = require('discord.js')
 
 module.exports = {
-    name: 'banner',
-    description: 'Display user banner',
+    data: {
+        name: 'banner',
+        description: 'Display user banner',
 
-    options: [
-        {
-            name: 'user',
-            description: 'Select the user',
-            type: ApplicationCommandOptionType.Mentionable
-        }
-    ],
+        options: [
+            {
+                name: 'user',
+                description: 'Select the user',
+                type: ApplicationCommandOptionType.Mentionable
+            }
+        ],
+    },
 
-    /**
-     * 
-     * @param {Client} client 
-     * @param {Interaction} interaction 
-     */
-
-    callback: async(client, interaction) => {
+    async execute(interaction) {
         try {
             
             await interaction.deferReply()
@@ -68,7 +64,6 @@ module.exports = {
 
         } catch (error) {
             console.log(error)
-            await interaction.editReply('Oops! There was an error')
         }
     }
 }

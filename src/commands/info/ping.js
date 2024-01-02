@@ -1,38 +1,34 @@
 const { EmbedBuilder } = require("@discordjs/builders");
-const { version, Client, Interaction } = require("discord.js");
+const { version } = require("discord.js");
 
 module.exports = {
-  name: 'ping',
-  description: 'View bot latency',
+  data: {
+    name: "ping",
+    description: "View bot latency",
+  },
 
-  /**
-   * 
-   * @param {Client} client 
-   * @param {Interaction} interaction 
-   */
-
-  callback: async (client, interaction) => {
+  async execute(interaction) {
     try {
-      await interaction.deferReply();
-      
-      const reply = await interaction.fetchReply();
+      const sent = await interaction.deferReply({ fetchReply: true });
+      const uptime = formatUptime(interaction.client.uptime);
 
-      const ping = reply.createdTimestamp - interaction.createdTimestamp;
-      const uptime = formatUptime(client.uptime)
-
-      const description = `\`\`\`fix\nPing:   ${ping} ms\nWS:     ${client.ws.ping} ms\nUptime: ${uptime}\nNode:   ${process.version}\nDJS:    v${version}\`\`\``;
+      const description = `\`\`\`fix\nPing:   ${
+        sent.createdTimestamp - interaction.createdTimestamp
+      }ms\nWS:     ${
+        interaction.client.ws.ping
+      } ms\nUptime: ${uptime}\nNode:   ${
+        process.version
+      }\nDJS:    v${version}\`\`\``;
 
       const embed = new EmbedBuilder()
         .setDescription(description)
-        .setColor(0x9b59b6)
+        .setColor(0x9b59b6);
 
-     await interaction.editReply({
-       embeds: [embed]
+      await interaction.editReply({
+        embeds: [embed],
       });
-
     } catch (error) {
-      await interaction.editReply('Oops! There was an error.')
-      console.log(error)
+      console.log(error);
     }
   },
 };
