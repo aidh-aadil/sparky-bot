@@ -18,7 +18,7 @@
 ## How you can use my code: 
 1. Clone my repository
 ```
-git clone https://github.com/aidhaadil/sparky-bot.git
+git clone https://github.com/aidhaadil/sparky-bot
 ```
 2. Install the dependencies (discord.js, dotenv, nodemon etc.)
 ```
