@@ -1,34 +1,50 @@
 # Sparky
+
 - A discord bot programmed in Javascript using the [discord.js](https://discord.js.org/) library
 - If you want to help build this bot and collaborate. Join [Sparky Support Server](https://discord.gg/SAqb5Dcfek)
 
 ## What can the bot do?
+
 ### Info commands
-- `ping`        : View bot latency
-- `bot-info`    : View some information about the bot
-- `user-info`   : View some information about user
+
+- `ping` : View bot latency
+- `bot-info` : View some information about the bot
+- `user-info` : View some information about user
 - `server-info` : View some information about the current server
-- `avatar`      : Display user's avatar
-- `banner`      : Display user's banner if they have one
+- `avatar` : Display user's avatar
+- `banner` : Display user's banner if they have one
 
 ### Moderation commands
+
 - `kick` : Kick an user from the server
 - `warn` : Warn an user
 
-## How you can use my code: 
+### Economy system
+
+- `daily`: Collect daily rewards
+
+## How you can use my code:
+
 1. Clone my repository
+
 ```
 git clone https://github.com/aidhaadil/sparky-bot
 ```
+
 2. Install the dependencies (discord.js, dotenv, nodemon etc.)
+
 ```
 npm install discord.js dotenv nodemon
 ```
+
 3. Create a .env file and add your bot token
+
 ```
 BOT_TOKEN = "your-bot-token"
 ```
+
 4. Run the bot
+
 ```
 npm start
 ```
