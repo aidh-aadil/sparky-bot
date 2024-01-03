@@ -13,13 +13,12 @@ module.exports = {
     try {
       const sent = await interaction.deferReply({ fetchReply: true })
       const uptime = formatUptime(interaction.client.uptime)
-      // const lastUpdatedDate = getLastCommitDate();
       const totalMembers = interaction.client.guilds.cache.reduce(
         (a, b) => a + b.memberCount,
         0
       )
 
-      const description = `\`\`\`fix\nDeveloper:   aidhaadil\nStatus:      ${status}\nLanguage:    JavaScript\nCreated on:  ${interaction.client.user.createdAt.toUTCString()}\nLast update: 02.01.2023\`\`\``
+      const description = `\`\`\`fix\nDeveloper:   aidhaadil\nStatus:      ${status}\nLanguage:    JavaScript\nCreated on:  ${interaction.client.user.createdAt.toUTCString()}\nLast update: ${getLastCommitDate()}\`\`\``
 
       const pingField = `\`\`\`fix\nPing:   ${
         sent.createdTimestamp - interaction.createdTimestamp
@@ -58,8 +57,8 @@ function formatUptime(uptimeMilliseconds) {
   return `${days}d ${hours}h ${minutes}m ${secondsLeft}s`
 }
 
-// function getLastCommitDate() {
-// const command = `git log -1 --format="%cd" --date=format:"%d.%m.%Y" --all`;
-// const lastCommitDate = execSync(command, { encoding: 'utf-8' });
-// return lastCommitDate.trim();
-//}
+function getLastCommitDate() {
+  const command = `git log -1 --format="%cd" --date=format:"%d.%m.%Y" --all`
+  const lastCommitDate = execSync(command, { encoding: 'utf-8' })
+  return lastCommitDate.trim()
+}

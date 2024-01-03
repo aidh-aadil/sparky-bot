@@ -1,8 +1,8 @@
 {
-    "testServer": "1119144137808171040",
+    "guildId": "1119144137808171040",
     "clientId": "1103308891976126554",
     "devs": ["769105946034831390"],
     "botVersion": "1.0.0",
     "status": "Under development",
-    "totalCommands": "9"
+    "totalCommands": "10"
 }
