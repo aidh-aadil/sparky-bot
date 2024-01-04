@@ -18,6 +18,14 @@ module.exports = {
 
   async execute(interaction) {
     try {
+      if (!interaction.inGuild()) {
+        await interaction.reply({
+          content: 'Use this command in a server',
+          ephemeral: true,
+        })
+        return
+      }
+
       const targetUserID = interaction.options.get('user')?.value
       const reason =
         interaction.options.get('reason')?.value || 'No reason provided.'

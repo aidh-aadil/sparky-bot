@@ -13,6 +13,14 @@ module.exports = {
 
   async execute(interaction) {
     try {
+      if (!interaction.inGuild()) {
+        await interaction.reply({
+          content: 'Use this command in a server',
+          ephemeral: true,
+        })
+        return
+      }
+
       await interaction.deferReply()
 
       const targetUserID =

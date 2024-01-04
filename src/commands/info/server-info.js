@@ -92,7 +92,10 @@ module.exports = {
           embeds: [embed],
         })
       } else {
-        interaction.editReply('You can only use this command in a server')
+        await interaction.reply({
+          content: 'You can only use this command in a server',
+          ephemeral: true,
+        })
       }
     } catch (error) {
       console.log(error)
