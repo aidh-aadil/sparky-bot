@@ -1,4 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
+const { colors } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -49,7 +50,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
           .setTitle(`${interaction.guild.name}`)
-          .setColor(0x9b59b6)
+          .setColor(colors.purple)
           .setDescription(description)
           .addFields(
             {

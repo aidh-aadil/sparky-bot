@@ -1,5 +1,6 @@
 const { PermissionFlagsBits } = require('discord.js')
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
+const { colors } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -73,7 +74,7 @@ module.exports = {
       await targetUser.kick({ reason })
 
       const embed = new EmbedBuilder()
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
         .setDescription(
           `\nReason: ${reason}\nModerator: <@${interaction.member.id}>\nServer: ${interaction.guild.name}`
         )

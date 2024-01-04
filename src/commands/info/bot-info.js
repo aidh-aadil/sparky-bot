@@ -1,5 +1,10 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
-const { botVersion, status, totalCommands } = require('../../../config.json')
+const {
+  botVersion,
+  status,
+  totalCommands,
+  colors,
+} = require('../../../config.json')
 const { version } = require('discord.js')
 const { execSync } = require('child_process')
 
@@ -30,7 +35,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
         .setTitle('Bot Info')
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
         .setDescription(description)
         .addFields(
           { name: 'Ping', value: pingField, inline: true },

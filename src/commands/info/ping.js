@@ -1,5 +1,6 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const { version } = require('discord.js')
+const { colors } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -21,7 +22,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
         .setDescription(description)
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
 
       await interaction.editReply({
         embeds: [embed],

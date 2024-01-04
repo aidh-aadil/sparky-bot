@@ -1,5 +1,6 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const UserProfile = require('../../../schemas/userProfile')
+const { colors } = require('../../../config.json')
 
 const dailyAmount = 500
 
@@ -26,7 +27,7 @@ module.exports = {
       })
 
       const dailyAlreadyCollectedEmbed = new EmbedBuilder()
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
         .setDescription(
           'You have already collected your daily reward for today.'
         )
@@ -57,7 +58,7 @@ module.exports = {
       await userProfile.save()
 
       const collectDailyEmbed = new EmbedBuilder()
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
         .setTitle('Collected your daily reward!')
         .setDescription(
           `You received: :moneybag: ${dailyAmount}.\nNew balance: :moneybag: ${userProfile.balance}`

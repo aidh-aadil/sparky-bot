@@ -1,6 +1,7 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const Cooldown = require('../../../schemas/Cooldown')
 const UserProfile = require('../../../schemas/userProfile')
+const { colors } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -26,7 +27,7 @@ module.exports = {
       let cooldown = await Cooldown.findOne({ commandName, userId, guildId })
 
       const cooldownEmbed = new EmbedBuilder()
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
         .setDescription('Woah! Calm down there. You are on cooldown.')
         .setFooter(
           `Cooldown ends in ${getCooldownRemaining(
@@ -62,7 +63,7 @@ module.exports = {
       }
 
       const noCashEmbed = new EmbedBuilder()
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
         .setTitle('Looks like you received nothing!')
         .setDescription(getRandomNoCashResponse)
 
@@ -108,7 +109,7 @@ module.exports = {
       }
 
       const workCollectedEmbed = new EmbedBuilder()
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
         .setDescription(getRandomWorkResponse())
         .setFooter(`Tip:  I am open-sourced.`)
 

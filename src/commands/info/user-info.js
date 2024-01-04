@@ -1,4 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
+const { colors } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -29,7 +30,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
         .setTitle(`${targetUser.user.username}`)
-        .setColor(0x9b59b6)
+        .setColor(colors.purple)
         .setThumbnail(targetUser.user.avatarURL())
         .addFields(
           { name: 'Username', value: `${targetUser.user.tag}`, inline: true },
