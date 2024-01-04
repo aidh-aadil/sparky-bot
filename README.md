@@ -39,7 +39,7 @@ npm install discord.js dotenv nodemon mongoose
 
 3. **Setting up environment variables**
 
-Create a .env file. Then, add your bot token and your mongodb connection string.
+Create a `.env` file. Then, add your bot token and your mongodb connection string.
 You will also have to set up a database. I used [MongoDB](https://www.mongodb.com/).
 
 ```py
