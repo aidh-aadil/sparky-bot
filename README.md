@@ -9,19 +9,20 @@
 
 - `ping` : View bot latency
 - `bot-info` : View some information about the bot
-- `user-info` : View some information about user
-- `server-info` : View some information about the current server
-- `avatar` : Display user's avatar
-- `banner` : Display user's banner if they have one
+- `user-info` : Fetch some information about user
+- `server-info` : View some information about that server
+- `avatar` : Fetch user avatar
+- `banner` : Fetch user banner if they have one
 
 ### Moderation commands
 
-- `kick` : Kick an user from the server
-- `warn` : Warn an user
+- `kick` : Kick user from that server
+- `warn` : Warn user
 
 ### Economy system
 
-- `daily` : Collect daily rewards
+- `daily` : Collect daily reward
+- `work` : Get some bot-cash
 
 ## How you can use my code:
 
@@ -43,7 +44,15 @@ npm install discord.js dotenv nodemon
 BOT_TOKEN = "your-bot-token"
 ```
 
-4. Run the bot
+4. Register the commands (globally)
+
+```
+node src/deployCommands.js
+```
+
+- If you want your bot to only to work in a specific guild, you can see [Guild command registration](https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands). Also remember to update `config.json` accordingly.
+
+5. Run the bot
 
 ```
 npm start
