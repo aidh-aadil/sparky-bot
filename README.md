@@ -28,36 +28,40 @@
 
 1. Clone my repository
 
-```
+```bash
 git clone https://github.com/aidhaadil/sparky-bot
 ```
 
 2. Install the dependencies (discord.js, dotenv, nodemon, mongoose...)
 
-```
+```bash
 npm install discord.js dotenv nodemon mongoose
 ```
 
-3. Create a .env file. Then, add your bot token and your mongodb connection string (That means you will also have to set up a database)
+3. Create a .env file. Then, add your bot token and your mongodb connection string
 
-```
+- You will also have to set up a database. I used [MongoDB](https://www.mongodb.com/)
+
+```py
 BOT_TOKEN = "your-bot-token"
 MONGODB_URI = "your-connection-string"
-```
 
-- Remember to replace the <password> to your cluster user password
+# Remember to replace the `<password>` to your cluster user password
+```
 
 4. Register the commands (globally)
 
-```
+- If you want your bot to only to work in a specific guild, you can see [Guild command registration](https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands)
+
+```bash
 node src/deployCommands.js
 ```
 
-- If you want your bot to only to work in a specific guild, you can see [Guild command registration](https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands). Also remember to update `config.json` accordingly.
+- Also remember to update `config.json` accordingly.
 
 5. Run the bot
 
-```
+```bash
 npm start
 ```
 
