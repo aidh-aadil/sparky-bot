@@ -1,10 +1,9 @@
-const { EmbedBuilder } = require('@discordjs/builders')
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 
 module.exports = {
-  data: {
-    name: 'server-info',
-    description: 'View some information about this server',
-  },
+  data: new SlashCommandBuilder()
+    .setName('server-info')
+    .setDescription('View some information about this server'),
 
   async execute(interaction) {
     try {

@@ -1,11 +1,10 @@
-const { EmbedBuilder } = require('@discordjs/builders')
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const { version } = require('discord.js')
 
 module.exports = {
-  data: {
-    name: 'ping',
-    description: 'View bot latency',
-  },
+  data: new SlashCommandBuilder()
+    .setName('ping')
+    .setDescription('View bot latency'),
 
   async execute(interaction) {
     try {

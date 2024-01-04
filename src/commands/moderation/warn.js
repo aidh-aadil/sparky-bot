@@ -1,32 +1,20 @@
-const {
-  ApplicationCommandOptionType,
-  PermissionFlagsBits,
-  EmbedBuilder,
-} = require('discord.js')
+const { PermissionFlagsBits } = require('discord.js')
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 
 module.exports = {
-  data: {
-    name: 'warn',
-    description: 'Warn an user',
-
-    options: [
-      {
-        name: 'user',
-        description: 'Select a user to warn',
-        type: ApplicationCommandOptionType.Mentionable,
-        required: true,
-      },
-      {
-        name: 'reason',
-        description: 'Reason for the warning',
-        type: ApplicationCommandOptionType.String,
-        required: false,
-      },
-    ],
-
-    permissionsRequired: [PermissionFlagsBits.ModerateMembers],
-    botPermissions: [PermissionFlagsBits.ModerateMembers],
-  },
+  data: new SlashCommandBuilder()
+    .setName('warn')
+    .setDescription('Warn user')
+    .addUserOption((option) =>
+      option.setName('user').setDescription('Select the user').setRequired(true)
+    )
+    .addStringOption((option) =>
+      option
+        .setName('reason')
+        .setDescription('Reason for warning')
+        .setRequired(false)
+    )
+    .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers),
 
   async execute(interaction) {
     try {

@@ -1,31 +1,20 @@
-const {
-  ApplicationCommandOptionType,
-  PermissionFlagsBits,
-  EmbedBuilder,
-} = require('discord.js')
+const { PermissionFlagsBits } = require('discord.js')
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 
 module.exports = {
-  data: {
-    name: 'kick',
-    description: 'Kick an user',
-    options: [
-      {
-        name: 'user',
-        description: 'Select the user to kick',
-        type: ApplicationCommandOptionType.Mentionable,
-        required: true,
-      },
-      {
-        name: 'reason',
-        description: 'Reason for kicking',
-        type: ApplicationCommandOptionType.String,
-        required: false,
-      },
-    ],
-
-    permissionsRequired: [PermissionFlagsBits.ModerateMembers],
-    botPermissions: [PermissionFlagsBits.ModerateMembers],
-  },
+  data: new SlashCommandBuilder()
+    .setName('kick')
+    .setDescription('Kick user from this server')
+    .addUserOption((option) =>
+      option.setName('user').setDescription('Select the user').setRequired(true)
+    )
+    .addStringOption((option) =>
+      option
+        .setName('reason')
+        .setDescription('Reason for kicking')
+        .setRequired(false)
+    )
+    .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers),
 
   async execute(interaction) {
     try {

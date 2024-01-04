@@ -1,13 +1,12 @@
-const { EmbedBuilder } = require('@discordjs/builders')
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const UserProfile = require('../../../schemas/userProfile')
 
 const dailyAmount = 500
 
 module.exports = {
-  data: {
-    name: 'daily',
-    description: 'Collect your daily reward',
-  },
+  data: new SlashCommandBuilder()
+    .setName('daily')
+    .setDescription('Collect your daily reward'),
 
   async execute(interaction) {
     try {

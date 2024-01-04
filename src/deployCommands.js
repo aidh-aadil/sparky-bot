@@ -33,6 +33,7 @@ const rest = new REST().setToken(process.env.BOT_TOKEN)
     console.log(
       `Started refreshing ${commands.length} application (/) commands.`
     )
+
     const data = await rest.put(Routes.applicationCommands(clientId), {
       body: commands,
     })

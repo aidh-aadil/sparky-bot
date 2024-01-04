@@ -1,13 +1,12 @@
-const { EmbedBuilder } = require('@discordjs/builders')
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const { botVersion, status, totalCommands } = require('../../../config.json')
 const { version } = require('discord.js')
 const { execSync } = require('child_process')
 
 module.exports = {
-  data: {
-    name: 'bot-info',
-    description: 'View some information about the bot',
-  },
+  data: new SlashCommandBuilder()
+    .setName('bot-info')
+    .setDescription('View some information about the bot'),
 
   async execute(interaction) {
     try {

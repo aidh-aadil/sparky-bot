@@ -54,7 +54,7 @@ for (const file of eventFiles) {
 }
 
 ;(async () => {
-  await mongoose.connect(process.env.MONGO_DB_URI)
+  await mongoose.connect(process.env.MONGODB_URI)
   console.log('✅ Connected to database')
 
   client.login(process.env.BOT_TOKEN)

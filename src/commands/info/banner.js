@@ -1,19 +1,15 @@
-const { EmbedBuilder } = require('@discordjs/builders')
-const { ApplicationCommandOptionType } = require('discord.js')
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 
 module.exports = {
-  data: {
-    name: 'banner',
-    description: 'Display user banner',
-
-    options: [
-      {
-        name: 'user',
-        description: 'Select the user',
-        type: ApplicationCommandOptionType.Mentionable,
-      },
-    ],
-  },
+  data: new SlashCommandBuilder()
+    .setName('banner')
+    .setDescription('Fetch user banner')
+    .addUserOption((option) =>
+      option
+        .setName('user')
+        .setDescription('Select the user')
+        .setRequired(false)
+    ),
 
   async execute(interaction) {
     try {

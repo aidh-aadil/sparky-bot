@@ -1,12 +1,11 @@
-const { EmbedBuilder } = require('@discordjs/builders')
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const Cooldown = require('../../../schemas/Cooldown')
 const UserProfile = require('../../../schemas/userProfile')
 
 module.exports = {
-  data: {
-    name: 'work',
-    description: 'Get some cash for doing something',
-  },
+  data: new SlashCommandBuilder()
+    .setName('work')
+    .setDescription('Get some bot-cash'),
 
   async execute(interaction) {
     try {
