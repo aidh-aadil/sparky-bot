@@ -18,6 +18,10 @@ Sparky is a versatile Discord bot developed in JavaScript using the [discord.js]
 - `kick` : Kick user from that server
 - `warn` : Warn user
 
+### Fun commands
+
+- `drake-meme` : Generates a drake meme based on your input
+
 ### Economy system
 
 - `daily` : Collect daily reward
