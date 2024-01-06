@@ -22,6 +22,7 @@ Sparky is a versatile Discord bot developed in JavaScript using the [discord.js]
 
 - `daily` : Collect daily reward
 - `work` : Get some bot-cash
+- `balance`: View user balance
 
 ## How you can use my code:
 

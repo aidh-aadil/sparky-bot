@@ -4,7 +4,7 @@
     "devs": ["769105946034831390"],
     "botVersion": "1.0.0",
     "status": "Under development",
-    "totalCommands": "10",
+    "totalCommands": "11",
     "colors": {
         "purple": [155, 89, 182]
     },
