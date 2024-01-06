@@ -1,8 +1,8 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const UserProfile = require('../../../schemas/userProfile')
-const { colors } = require('../../../config.json')
+const { colors, currencyEmotes } = require('../../../config.json')
 
-const dailyAmount = 500
+const dailyAmount = 1000
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -61,7 +61,7 @@ module.exports = {
         .setColor(colors.purple)
         .setTitle('Collected your daily reward!')
         .setDescription(
-          `You received: :moneybag: ${dailyAmount}.\nNew balance: :moneybag: ${userProfile.balance}`
+          `You received: ${currencyEmotes.coinbag} ${dailyAmount}.\nNew balance: ${currencyEmotes.coinbag} ${userProfile.balance}`
         )
         .setFooter({
           text: `Next daily in ${countdownToNextDay()}`,

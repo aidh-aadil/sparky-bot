@@ -1,7 +1,7 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
 const Cooldown = require('../../../schemas/Cooldown')
 const UserProfile = require('../../../schemas/userProfile')
-const { colors } = require('../../../config.json')
+const { colors, currencyEmotes } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -26,17 +26,16 @@ module.exports = {
 
       let cooldown = await Cooldown.findOne({ commandName, userId, guildId })
 
-      const cooldownEmbed = new EmbedBuilder()
-        .setColor(colors.purple)
-        .setDescription('Woah! Calm down there. You are on cooldown.')
-        .setFooter(
-          `Cooldown ends in ${getCooldownRemaining(
-            cooldown.endsAt,
-            Date.now()
-          )}`
-        )
-
       if (cooldown && Date.now() < cooldown.endsAt) {
+        const cooldownEmbed = new EmbedBuilder()
+          .setColor(colors.purple)
+          .setDescription('Woah! Calm down there. You are on cooldown.')
+          .setFooter({
+            text: `Cooldown ends in ${getCooldownRemaining(
+              cooldown.endsAt,
+              Date.now()
+            )}`,
+          })
         await interaction.editReply({
           embeds: [cooldownEmbed],
         })
@@ -45,38 +44,6 @@ module.exports = {
 
       if (!cooldown) {
         cooldown = new Cooldown({ commandName, userId, guildId })
-      }
-
-      const noCashResponses = [
-        'Wow, you must be the richest broke person around!',
-        'Cash? Who needs it? Not you, apparently!',
-        'You have hit the jackpot... of nothing!',
-        'Cash alert: Not found. Keep trying!',
-        'Zero cash detected. Keep trying your luck!',
-        'Cashless wonder! Keep up the good work!',
-        "No cash? Perfect timing to join the 'Broke but Happy' club!",
-      ]
-
-      function getRandomNoCashResponse() {
-        const randomIndex = Math.floor(Math.random() * noCashResponses.length)
-        return noCashResponses[randomIndex]
-      }
-
-      const noCashEmbed = new EmbedBuilder()
-        .setColor(colors.purple)
-        .setTitle('Looks like you received nothing!')
-        .setDescription(getRandomNoCashResponse)
-
-      const chance = getRandomNumber(1, 100)
-
-      if (chance < 30) {
-        await interaction.editReply({
-          embeds: [noCashEmbed],
-        })
-
-        cooldown.endsAt = Date.now() + 21_600_000
-        await cooldown.save()
-        return
       }
 
       const amount = getRandomNumber(100, 500)
@@ -95,12 +62,12 @@ module.exports = {
       await Promise.all([cooldown.save(), userProfile.save()])
 
       const workResponses = [
-        `You perfected the art of procrastination and received :moneybag: ${amount}.`,
-        `You mastered the ancient technique of stared at the screen and pretended to be productive. You received :moneybag: ${amount}.`,
-        `You made an industry-scale application using only HTML. You received ${amount} (from your mom).`,
-        `Your dad gifted you ${amount}.`,
-        `You invested in crypto and received ${amount}. (Just a matter of time until you lose it all)`,
-        `You broke into your own house and found ${amount}`,
+        `You perfected the art of procrastination and received ${currencyEmotes.coinbag} ${amount}.`,
+        `You mastered the ancient technique of stared at the screen and pretended to be productive. You received ${currencyEmotes.coinbag} ${amount}.`,
+        `You made an industry-scale application using only HTML. You received ${currencyEmotes.coinbag} ${amount} (from your mom).`,
+        `Your dad gifted you ${currencyEmotes.coinbag} ${amount}.`,
+        `You invested in crypto and received ${currencyEmotes.coinbag} ${amount}.`,
+        `You broke into your own house and found ${currencyEmotes.coinbag} ${amount}.`,
       ]
 
       function getRandomWorkResponse() {
@@ -111,7 +78,12 @@ module.exports = {
       const workCollectedEmbed = new EmbedBuilder()
         .setColor(colors.purple)
         .setDescription(getRandomWorkResponse())
-        .setFooter(`Tip:  I am open-sourced.`)
+        .setFooter({
+          text: `Work again in ${getCooldownRemaining(
+            cooldown.endsAt,
+            Date.now()
+          )}`,
+        })
 
       await interaction.editReply({
         embeds: [workCollectedEmbed],

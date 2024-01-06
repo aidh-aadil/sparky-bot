@@ -7,5 +7,8 @@
     "totalCommands": "10",
     "colors": {
         "purple": [155, 89, 182]
+    },
+    "currencyEmotes": {
+        "coinbag": "<:coinbag:1193125437388365917>"
     }
 }
