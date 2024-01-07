@@ -45,7 +45,7 @@ module.exports = {
         .setColor(colors.purple)
         .setTitle(`${targetUser.user.username}'s balance`)
         .setDescription(
-          `Balance: ${currencyEmotes.coinbag} ${userProfile.balance}`
+          `Balance: ${currencyEmotes.money} ${userProfile.balance}`
         )
         .setFooter({
           text: `Fact: I am open-source`,

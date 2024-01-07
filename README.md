@@ -1,6 +1,6 @@
 # What is Sparky?
 
-Sparky is a versatile Discord bot developed in JavaScript using the [discord.js](https://discord.js.org/) library. If you're interested in contributing or collaborating, feel free to join the [Sparky Support Server](https://discord.gg/SAqb5Dcfek).
+Sparky is a versatile Discord bot developed in JavaScript using the [discord.js](https://discord.js.org/) library. If you're interested in contributing or collaborating, feel free to join the [Sparky Support Server](https://discord.gg/TNE72AtH7y).
 
 ## What can the bot do?
 
@@ -21,6 +21,7 @@ Sparky is a versatile Discord bot developed in JavaScript using the [discord.js]
 ### Fun commands
 
 - `drake-meme` : Generates a drake meme based on your input
+- `oogway-quote` : Generate a quote by master oogway
 
 ### Economy system
 

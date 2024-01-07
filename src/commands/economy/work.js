@@ -62,12 +62,12 @@ module.exports = {
       await Promise.all([cooldown.save(), userProfile.save()])
 
       const workResponses = [
-        `You perfected the art of procrastination and received ${currencyEmotes.coinbag} ${amount}.`,
-        `You mastered the ancient technique of stared at the screen and pretended to be productive. You received ${currencyEmotes.coinbag} ${amount}.`,
-        `You made an industry-scale application using only HTML. You received ${currencyEmotes.coinbag} ${amount} (from your mom).`,
-        `Your dad gifted you ${currencyEmotes.coinbag} ${amount}.`,
-        `You invested in crypto and received ${currencyEmotes.coinbag} ${amount}.`,
-        `You broke into your own house and found ${currencyEmotes.coinbag} ${amount}.`,
+        `You perfected the art of procrastination and received ${currencyEmotes.money} ${amount}.`,
+        `You mastered the ancient technique of stared at the screen and pretended to be productive. You received ${currencyEmotes.money} ${amount}.`,
+        `You made an industry-scale application using only HTML. You received ${currencyEmotes.money} ${amount} (from your mom).`,
+        `Your dad gifted you ${currencyEmotes.money} ${amount}.`,
+        `You invested in crypto and received ${currencyEmotes.money} ${amount}.`,
+        `You broke into your own house and found ${currencyEmotes.money} ${amount}.`,
       ]
 
       function getRandomWorkResponse() {

@@ -1,15 +1,15 @@
 {
-    "guildId": "1119144137808171040",
+    "guildId": "1193462530379620373",
     "clientId": "1103308891976126554",
     "devs": ["769105946034831390"],
     "botVersion": "1.0.0",
     "status": "Under development",
-    "totalCommands": "12",
+    "totalCommands": "13",
     "colors": {
         "purple": [155, 89, 182],
         "invis": [47, 49, 54]
     },
     "currencyEmotes": {
-        "coinbag": "<:coinbag:1193125437388365917>"
+        "money": "<:money:1193468140315738153> "
     }
 }

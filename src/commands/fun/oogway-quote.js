@@ -3,18 +3,12 @@ const { colors } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('drake-meme')
-    .setDescription('Generate your own drake meme')
+    .setName('oogway-quote')
+    .setDescription('Generate a quote by master oogway')
     .addStringOption((option) =>
       option
-        .setName('text-1')
-        .setDescription('The text that drake dislikes')
-        .setRequired(true)
-    )
-    .addStringOption((option) =>
-      option
-        .setName('text-2')
-        .setDescription('The text that drake likes')
+        .setName('text')
+        .setDescription('The quote you want to display')
         .setRequired(true)
     ),
 
@@ -22,9 +16,9 @@ module.exports = {
     try {
       await interaction.deferReply()
 
-      const response = `https://api.popcat.xyz/drake?text1=${encodeURIComponent(
-        interaction.options.get('text-1').value
-      )}&text2=${encodeURIComponent(interaction.options.get('text-2').value)}`
+      const response = `https://api.popcat.xyz/oogway?text=${encodeURIComponent(
+        interaction.options.get('text').value
+      )}`
 
       const embed = new EmbedBuilder()
         .setColor(colors.invis)

@@ -61,7 +61,7 @@ module.exports = {
         .setColor(colors.purple)
         .setTitle('Collected your daily reward!')
         .setDescription(
-          `You received: ${currencyEmotes.coinbag} ${dailyAmount}.\nNew balance: ${currencyEmotes.coinbag} ${userProfile.balance}`
+          `You received: ${currencyEmotes.money} ${dailyAmount}.\nNew balance: ${currencyEmotes.money} ${userProfile.balance}`
         )
         .setFooter({
           text: `Next daily in ${countdownToNextDay()}`,
