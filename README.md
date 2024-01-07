@@ -21,7 +21,7 @@ Sparky is a versatile Discord bot developed in JavaScript using the [discord.js]
 ### Fun commands
 
 - `drake-meme` : Generates a drake meme based on your input
-- `oogway-quote` : Generate a quote by master oogway
+- `oogway-quote` : Generate a quote by master oogway based on your input
 
 ### Economy system
 
