@@ -23,6 +23,7 @@ Sparky is a versatile Discord bot developed in JavaScript using the [discord.js]
 *Note: Some of these image manipulation commands might not work due to API errors.*
 - `drake-meme` : Generates a drake meme based on your input
 - `oogway-quote` : Generate a quote by master oogway based on your input
+- `pooh-meme` : Generate a pooh and pooh in tuxedo meme based on your input
 
 ### Economy system
 
