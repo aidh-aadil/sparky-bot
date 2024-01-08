@@ -22,9 +22,7 @@ module.exports = {
       )
 
       if (data.statusText == 'Not Found') {
-        return interaction.editReply({
-          content: `The word **"${word}"** does not exist.`,
-        })
+        return interaction.editReply(`The word **"${word}"** does not exist.`)
       }
 
       let info = await data.json()
