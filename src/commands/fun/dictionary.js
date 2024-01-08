@@ -22,9 +22,8 @@ module.exports = {
       )
 
       if (data.statusText == 'Not Found') {
-        return interaction.reply({
-          content: 'That word does not exist',
-          ephemeral: true,
+        return interaction.editReply({
+          content: `The word **"${word}"** does not exist.`,
         })
       }
 
