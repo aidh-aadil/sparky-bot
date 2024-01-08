@@ -3,18 +3,18 @@ const { colors } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('drake-meme')
-    .setDescription('Generate your own drake meme')
+    .setName('pooh-meme')
+    .setDescription('Generate your own pooh meme')
     .addStringOption((option) =>
       option
         .setName('text-1')
-        .setDescription('The text that drake dislikes')
+        .setDescription('The text representing normal pooh')
         .setRequired(true)
     )
     .addStringOption((option) =>
       option
         .setName('text-2')
-        .setDescription('The text that drake likes')
+        .setDescription('The text representing pooh with a tuxedo')
         .setRequired(true)
     ),
 
@@ -27,10 +27,10 @@ module.exports = {
         })
         return
       }
-      
+
       await interaction.deferReply()
 
-      const response = `https://api.popcat.xyz/drake?text1=${encodeURIComponent(
+      const response = `https://api.popcat.xyz/pooh?text1=${encodeURIComponent(
         interaction.options.get('text-1').value
       )}&text2=${encodeURIComponent(interaction.options.get('text-2').value)}`
 

@@ -14,6 +14,14 @@ module.exports = {
 
   async execute(interaction) {
     try {
+      if (!interaction.inGuild()) {
+        await interaction.reply({
+          content: 'Use this command in a server',
+          ephemeral: true,
+        })
+        return
+      }
+      
       await interaction.deferReply()
 
       const response = `https://api.popcat.xyz/oogway?text=${encodeURIComponent(
