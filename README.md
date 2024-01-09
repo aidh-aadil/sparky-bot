@@ -26,6 +26,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `oogway-quote` : Generate a quote by master oogway based on your input
 - `pooh-meme` : Generate a pooh and pooh in tuxedo meme based on your input
 - `dictionary` : Search for a word in the dictionary
+- `rps` : Play a game of rock paper scissors against your friend
 
 ### Economy system
 
