@@ -20,9 +20,14 @@ module.exports = {
         }\nCreation date: ${interaction.guild.createdAt.toUTCString()}\`\`\``
 
         function getVerificationLevel(lvl) {
+          if (lvl == 0) {
+            return 'None'
+          }
+
           if (lvl === 1) {
             return 'Low'
           }
+
           if (lvl == 2) {
             return 'Medium'
           }
@@ -48,6 +53,19 @@ module.exports = {
           }
         }
 
+        const textChannelCount = interaction.guild.channels.cache
+          .filter((c) => c.type === 0)
+          .toJSON().length
+        const voiceChannelCount = interaction.guild.channels.cache
+          .filter((c) => c.type === 2)
+          .toJSON().length
+        const categoryCount = interaction.guild.channels.cache
+          .filter((c) => c.type === 4)
+          .toJSON().length
+        const threadCount = interaction.guild.channels.cache
+          .filter((c) => c.type === 5)
+          .toJSON().length
+
         const embed = new EmbedBuilder()
           .setTitle(`${interaction.guild.name}`)
           .setColor(colors.purple)
@@ -64,8 +82,23 @@ module.exports = {
               inline: true,
             },
             {
-              name: 'Channels and categories',
-              value: `${interaction.guild.channels.cache.size}`,
+              name: 'Text channels',
+              value: `${textChannelCount}`,
+              inline: true,
+            },
+            {
+              name: 'Voice channels',
+              value: `${voiceChannelCount}`,
+              inline: true,
+            },
+            {
+              name: 'Categories',
+              value: `${categoryCount}`,
+              inline: true,
+            },
+            {
+              name: 'Threads',
+              value: `${threadCount}`,
               inline: true,
             },
             {

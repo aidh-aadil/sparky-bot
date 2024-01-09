@@ -39,7 +39,10 @@ module.exports = {
           {
             name: 'Created on',
             value: `${targetUser.user.createdAt.toUTCString()}`,
-            inline: true,
+          },
+          {
+            name: 'Roles',
+            value: `${targetUser.roles.cache.map((r) => r).join(' ')}`,
           }
         )
 
