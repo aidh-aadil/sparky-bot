@@ -27,6 +27,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `pooh-meme` : Generate a pooh and pooh in tuxedo meme based on your input
 - `dictionary` : Search for a word in the dictionary
 - `rps` : Play a game of rock paper scissors against your friend
+- `8ball` : Ask magic 8ball a yes/no answer and get a randomly generated answer
 
 ### Economy system
 
