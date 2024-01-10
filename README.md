@@ -4,6 +4,14 @@ Sparky is a versatile Discord bot developed in JavaScript using the [discord.js]
 
 ## What can the bot do?
 
+### Integrated AI
+
+Sparky uses [Gemini](https://deepmind.google/technologies/gemini/#introduction) (Google's 'most capable' AI model) as a chatbot.<br>
+To chat, start by pinging the bot and follow it up with your prompt:
+```
+@Sparky Bot {your-prompt}
+```
+
 ### Info commands
 
 - `ping` : View bot latency
