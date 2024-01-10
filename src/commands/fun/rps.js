@@ -9,7 +9,7 @@ const { colors } = require('../../../config.json')
 
 const choices = [
   { name: 'Rock', emoji: '🪨', beats: 'Scissors' },
-  { name: 'Paper', emoji: '📄', beats: 'Rock' },
+  { name: 'Paper', emoji: '🧻', beats: 'Rock' },
   { name: 'Scissors', emoji: '✂️', beats: 'Paper' },
 ]
 
@@ -50,7 +50,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
         .setColor(colors.invis)
-        .setTitle('Rock Paper Scissors!')
+        .setTitle(`Rock Paper Scissors!`)
         .setDescription(`It's ${targetUser}'s turn...`)
 
       const buttons = choices.map((choice) => {
