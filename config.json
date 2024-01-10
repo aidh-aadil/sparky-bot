@@ -1,16 +1,16 @@
 {
-    "guildId": "1193462530379620373",
-    "clientId": "1103308891976126554",
-    "devs": ["769105946034831390"],
-    "botVersion": "1.0.0",
-    "status": "Under development",
-    "totalCommands": "16",
-    "colors": {
-        "purple": [155, 89, 182],
-        "invis": [47, 49, 54],
-        "red": [255, 26, 26]
-    },
-    "currencyEmotes": {
-        "money": "<:money:1193468140315738153> "
-    }
+  "guildId": "1193462530379620373",
+  "clientId": "1103308891976126554",
+  "devs": ["769105946034831390"],
+  "botVersion": "1.0.0",
+  "status": "Under development",
+  "totalCommands": "17",
+  "colors": {
+    "purple": [155, 89, 182],
+    "invis": [47, 49, 54],
+    "red": [255, 26, 26]
+  },
+  "currencyEmotes": {
+    "money": "<:money:1193468140315738153> "
+  }
 }
