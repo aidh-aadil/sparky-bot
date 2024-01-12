@@ -5,6 +5,7 @@ const { colors } = require('../../../config.json')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('warn')
+    .setDMPermission(false)
     .setDescription('Warn user')
     .addUserOption((option) =>
       option.setName('user').setDescription('Select the user').setRequired(true)
@@ -19,14 +20,6 @@ module.exports = {
 
   async execute(interaction) {
     try {
-      if (!interaction.inGuild()) {
-        await interaction.reply({
-          content: 'Use this command in a server',
-          ephemeral: true,
-        })
-        return
-      }
-
       const targetUserID = interaction.options.get('user')?.value
       const reason =
         interaction.options.get('reason')?.value || 'No reason provided.'
@@ -72,9 +65,9 @@ module.exports = {
       }
 
       const embed = new EmbedBuilder()
-        .setColor(colors.purple)
+        .setColor(colors.red)
         .setDescription(
-          `\nReason: ${reason}\nServer: ${interaction.guild.name}\nModerator: <@${interaction.member.id}>`
+          `\nReason: ${reason}\nModerator: <@${interaction.member.id}>`
         )
         .setTimestamp()
 

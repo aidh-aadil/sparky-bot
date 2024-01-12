@@ -7,17 +7,11 @@ const dailyAmount = 1000
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('daily')
+    .setDMPermission(false)
     .setDescription('Collect your daily reward'),
 
   async execute(interaction) {
     try {
-      if (!interaction.inGuild()) {
-        await interaction.reply({
-          content: 'This command should be ran inside a server',
-          ephemeral: true,
-        })
-        return
-      }
 
       await interaction.deferReply()
 

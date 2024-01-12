@@ -16,6 +16,7 @@ const choices = [
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('rps')
+    .setDMPermission(false)
     .setDescription('Play a game of rock paper scissors')
     .addUserOption((option) =>
       option
@@ -24,13 +25,6 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction) {
-    if (!interaction.inGuild()) {
-      await interaction.reply({
-        content: 'Use this command in a server',
-        ephemeral: true,
-      })
-      return
-    }
     try {
       await interaction.deferReply()
 
@@ -49,7 +43,7 @@ module.exports = {
       }
 
       const embed = new EmbedBuilder()
-        .setColor(colors.invis)
+        .setColor(colors.green)
         .setTitle(`Rock Paper Scissors!`)
         .setDescription(`It's ${targetUser}'s turn...`)
 

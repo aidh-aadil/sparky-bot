@@ -6,17 +6,11 @@ const { colors, currencyEmotes } = require('../../../config.json')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('work')
+    .setDMPermission(false)
     .setDescription('Get some bot-cash'),
 
   async execute(interaction) {
     try {
-      if (!interaction.inGuild()) {
-        await interaction.reply({
-          content: 'This command should be ran inside a server',
-          ephemeral: true,
-        })
-        return
-      }
 
       await interaction.deferReply()
 

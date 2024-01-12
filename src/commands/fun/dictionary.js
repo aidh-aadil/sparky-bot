@@ -4,6 +4,7 @@ const { colors } = require('../../../config.json')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('dictionary')
+    .setDMPermission(false)
     .setDescription('Search a word in the dictionary')
     .addStringOption((option) =>
       option

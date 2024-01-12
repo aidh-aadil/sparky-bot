@@ -4,6 +4,7 @@ const { colors } = require('../../../config.json')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('drake-meme')
+    .setDMPermission(false)
     .setDescription('Generate your own drake meme')
     .addStringOption((option) =>
       option
@@ -20,14 +21,6 @@ module.exports = {
 
   async execute(interaction) {
     try {
-      if (!interaction.inGuild()) {
-        await interaction.reply({
-          content: 'Use this command in a server',
-          ephemeral: true,
-        })
-        return
-      }
-      
       await interaction.deferReply()
 
       const response = `https://api.popcat.xyz/drake?text1=${encodeURIComponent(

@@ -11,6 +11,7 @@ const { execSync } = require('child_process')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('bot-info')
+    .setDMPermission(false)
     .setDescription('View some information about the bot'),
 
   async execute(interaction) {

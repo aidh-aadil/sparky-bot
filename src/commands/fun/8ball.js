@@ -4,6 +4,7 @@ const { colors } = require('../../../config.json')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('8ball')
+    .setDMPermission(false)
     .setDescription('Ask magic 8ball a yes/no question')
     .addStringOption((option) =>
       option

@@ -4,6 +4,7 @@ const { colors } = require('../../../config.json')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('pooh-meme')
+    .setDMPermission(false)
     .setDescription('Generate your own pooh meme')
     .addStringOption((option) =>
       option
@@ -20,13 +21,6 @@ module.exports = {
 
   async execute(interaction) {
     try {
-      if (!interaction.inGuild()) {
-        await interaction.reply({
-          content: 'Use this command in a server',
-          ephemeral: true,
-        })
-        return
-      }
 
       await interaction.deferReply()
 
