@@ -24,6 +24,8 @@ module.exports = {
       let channel =
         interaction.options.getChannel('channel') || interaction.channel
 
+      await interaction.deferReply()
+
       channel.permissionOverwrites.create(interaction.guild.id, {
         SendMessages: true,
       })
@@ -33,7 +35,7 @@ module.exports = {
         iconURL: `${interaction.user.avatarURL()}`,
       })
 
-      await interaction.reply({
+      await interaction.editReply({
         content: `${channel} has been unlocked`,
         embeds: [embed],
       })
