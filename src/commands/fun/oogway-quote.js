@@ -31,6 +31,9 @@ module.exports = {
         embeds: [embed],
       })
     } catch (error) {
+      await interaction.editReply({
+        content: 'Oops! There was an error.',
+      })
       console.log(error)
     }
   },

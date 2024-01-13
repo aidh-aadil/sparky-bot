@@ -11,7 +11,6 @@ module.exports = {
 
   async execute(interaction) {
     try {
-
       await interaction.deferReply()
 
       const commandName = 'work'
@@ -83,6 +82,9 @@ module.exports = {
         embeds: [workCollectedEmbed],
       })
     } catch (error) {
+      await interaction.editReply({
+        content: 'Oops! There was an error.',
+      })
       console.log(error)
     }
   },
