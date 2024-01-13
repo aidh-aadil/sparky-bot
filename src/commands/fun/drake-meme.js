@@ -37,8 +37,10 @@ module.exports = {
         embeds: [embed],
       })
     } catch (error) {
-      await interaction.editReply({
-        content: 'Oops! There was an error.',
+      await interaction.editReply('Oops! There was an error.').then((msg) => {
+        setTimeout(() => {
+          msg.delete()
+        }, 10000)
       })
       console.log(error)
     }

@@ -16,12 +16,13 @@ module.exports = {
         .setName('channel')
         .setDescription('The channel you want to unlock')
         .addChannelTypes(ChannelType.GuildText)
-        .setRequired(true)
+        .setRequired(false)
     ),
 
   async execute(interaction) {
     try {
-      let channel = interaction.options.getChannel('channel')
+      let channel =
+        interaction.options.getChannel('channel') || interaction.channel
 
       channel.permissionOverwrites.create(interaction.guild.id, {
         SendMessages: true,
@@ -37,8 +38,10 @@ module.exports = {
         embeds: [embed],
       })
     } catch (error) {
-      await interaction.editReply({
-        content: 'Oops! There was an error.',
+      await interaction.editReply('Oops! There was an error.').then((msg) => {
+        setTimeout(() => {
+          msg.delete()
+        }, 10000)
       })
       console.log(error)
     }

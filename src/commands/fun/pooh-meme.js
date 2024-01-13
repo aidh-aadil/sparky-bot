@@ -21,7 +21,6 @@ module.exports = {
 
   async execute(interaction) {
     try {
-
       await interaction.deferReply()
 
       const response = `https://api.popcat.xyz/pooh?text1=${encodeURIComponent(
@@ -38,8 +37,10 @@ module.exports = {
         embeds: [embed],
       })
     } catch (error) {
-      await interaction.editReply({
-        content: 'Oops! There was an error.',
+      await interaction.editReply('Oops! There was an error.').then((msg) => {
+        setTimeout(() => {
+          msg.delete()
+        }, 10000)
       })
       console.log(error)
     }
