@@ -66,12 +66,9 @@ module.exports = {
 
       await targetUser.kick({ reason })
 
-      const embed = new EmbedBuilder()
-        .setColor(colors.red)
-        .setDescription(
-          `\nReason: ${reason}\nModerator: <@${interaction.member.id}>`
-        )
-        .setTimestamp()
+      const embed = new EmbedBuilder().setColor(colors.red).setFooter({
+        text: `Reason: ${reason}\nModerator: ${interaction.user.username}`,
+      })
 
       await interaction.editReply({
         content: `**${targetUser} has been kicked!**`,
