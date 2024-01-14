@@ -56,11 +56,15 @@ module.exports = {
 
       const workResponses = [
         `You perfected the art of procrastination and received ${currencyEmotes.money} ${amount}.`,
-        `You mastered the ancient technique of stared at the screen and pretended to be productive. You received ${currencyEmotes.money} ${amount}.`,
+        `You mastered the ancient technique of staring at the screen and pretended to be productive. You received ${currencyEmotes.money} ${amount}.`,
         `You made an industry-scale application using only HTML. You received ${currencyEmotes.money} ${amount} (from your mom).`,
         `Your dad gifted you ${currencyEmotes.money} ${amount}.`,
         `You invested in crypto and received ${currencyEmotes.money} ${amount}.`,
         `You broke into your own house and found ${currencyEmotes.money} ${amount}.`,
+        `You snuck into a millionaire's party. He paid you to leave. Easy ${currencyEmotes.money} ${amount}`,
+        `Today's work involved mastering the art of juggling coffee cups. Here's a tip for your effort ${currencyEmotes.money} ${amount}.`,
+        `You accidentally fixed a bug while trying to create a new one. You received ${currencyEmotes.money} ${amount}.`,
+        `Successfully negotiated a peace treaty between the office plants. You earned ${currencyEmotes.money} ${amount}.`,
       ]
 
       function getRandomWorkResponse() {
