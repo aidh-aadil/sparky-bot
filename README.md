@@ -29,20 +29,24 @@ To chat, start by pinging the bot and follow it up with your prompt:
 - `lock` : Lock a channel in the current server.
 - `unlock` : Unlock a locked channel.
 - `purge` : Clear a bulk of messages
-- `timeout` : Timeout a user 
+- `timeout` : Timeout a user
 
-### Fun commands
+### Image generation
 
 _Note: Some of these image manipulation commands might not work due to API errors._
 
 - `drake-meme` : Generates a drake meme based on your input
 - `oogway-quote` : Generate a quote by master oogway based on your input
 - `pooh-meme` : Generate a pooh and pooh in tuxedo meme based on your input
+- `sad-cat-meme` : Generate a sad cat meme based on your input
+- `pet` : Generates a pet gif based on the user's avatar
+- `meme` : Generates a random meme
+
+### Fun commands
+
 - `dictionary` : Search for a word in the dictionary
 - `rps` : Play a game of rock paper scissors against your friend
 - `8ball` : Ask magic 8ball a yes/no answer and get a randomly generated answer
-- `pet` : Generates a pet gif based on the user's avatar
-- `meme` : Generates a random meme
 
 ### Economy system
 
