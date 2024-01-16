@@ -41,6 +41,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `sad-cat-meme` : Generate a sad cat meme based on your input
 - `pet` : Generates a pet gif based on the user's avatar
 - `meme` : Generates a random meme
+- `car` : Get a random car image
 
 ### Fun commands
 
