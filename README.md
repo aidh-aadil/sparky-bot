@@ -67,19 +67,20 @@ git clone https://github.com/aidhaadil/sparky-bot
 
 2. **Install the dependencies**
 
+_Note: Install all the dependencies listed in `package.json` file._
+
 ```bash
-npm install discord.js dotenv nodemon mongoose
+npm install discord.js
 ```
 
 3. **Setting up environment variables**
 
-Create a `.env` file. Then, add your bot token and your mongodb connection string.
-You will also have to set up a database. I used [MongoDB](https://www.mongodb.com/).
+Create a `.env` file. You will also have to set up a database. I used [MongoDB](https://www.mongodb.com/).
 
 ```py
 BOT_TOKEN = "your-bot-token"
+GEMINI_API_KEY = "your-api-key"
 MONGODB_URI = "your-connection-string"
-
 # Remember to replace the `<password>` to your cluster user password
 ```
 
