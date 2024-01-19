@@ -57,6 +57,10 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `work` : Get some bot-cash
 - `balance`: View user balance
 
+### Music System
+
+- `lyrics` : Fetch lyrics for a song
+
 ## How you can use my code:
 
 1. **Clone my repository**
