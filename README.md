@@ -50,6 +50,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `8ball` : Ask magic 8ball a yes/no answer and get a randomly generated answer
 - `translate` : Translate your text into another language
 - `periodic-table` : Fetch some information about an element
+- `random-element` : Get some information about a random element in the periodic table
 
 ### Economy system
 
