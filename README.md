@@ -24,6 +24,7 @@ To chat, start by pinging the bot and follow it up with your prompt:
 
 ### Moderation commands
 
+- `ban` : Ban a user from that server
 - `kick` : Kick a user from that server
 - `warn` : Warn a user
 - `lock` : Lock a channel in the current server.
