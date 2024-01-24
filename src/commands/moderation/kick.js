@@ -28,20 +28,25 @@ module.exports = {
 
       await interaction.deferReply()
 
+      const errEmbed = new EmbedBuilder().setColor(colors.red)
+
       if (!targetUser) {
-        await interaction.editReply(`Looks like that user isn't in this server`)
+        errEmbed.setDescription(`Looks like that user isn't in this server`)
+        await interaction.editReply({ embeds: [errEmbed] })
         return
       }
 
       if (targetUser.id == interaction.member.id) {
-        await interaction.editReply(`You cannot kick yourself. Bozo!`)
+        errEmbed.setDescription(`You cannot kick yourself. Bozo!`)
+        await interaction.editReply({ embeds: [errEmbed] })
         return
       }
 
       if (targetUser.id === interaction.guild.ownerId) {
-        await interaction.editReply(
+        errEmbed.setDescription(
           `You are not allowed to kick that user. They are the server owner`
         )
+        await interaction.editReply({ embeds: [errEmbed] })
         return
       }
 
@@ -51,16 +56,18 @@ module.exports = {
         interaction.guild.members.me.roles.highest.position
 
       if (targetUserRolePosition >= requestUserRolePosition) {
-        await interaction.editReply(
+        errEmbed.setDescription(
           'You cannot kick someone higher than or equal to you.'
         )
+        await interaction.editReply({ embeds: [errEmbed] })
         return
       }
 
       if (targetUserRolePosition >= botRolePosition) {
-        await interaction.editReply(
+        errEmbed.setDescription(
           'I cannot kick someone higher than or equal to me.'
         )
+        await interaction.editReply({ embeds: [errEmbed] })
         return
       }
 
