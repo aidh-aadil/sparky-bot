@@ -38,48 +38,54 @@ module.exports = {
       const reason =
         interaction.options.getString('reason') || 'No reason provided.'
 
+      const errEmbed = new EmbedBuilder().setColor(colors.red)
+
       if (!targetUser) {
-        await interaction.editReply(`Looks like that user isn't in this server`)
+        errEmbed.setDescription(`Looks like that user isn't in this server`)
+        await interaction.editReply({
+          embeds: [errEmbed],
+        })
         return
       }
 
       if (targetUser.bot) {
-        await interaction.editReply(`You cannot timeout a bot`)
+        errEmbed.setDescription(`You cannot timeout a bot`)
+        await interaction.editReply({
+          embeds: [errEmbed],
+        })
         return
       }
 
       if (targetUser.id == interaction.member.id) {
-        await interaction.editReply(`You cannot timeout yourself. Bozo!`)
+        errEmbed.setDescription(`You cannot timeout yourself. Bozo!`)
+        await interaction.editReply({
+          embeds: [errEmbed],
+        })
         return
       }
 
       if (targetUser.id === interaction.guild.ownerId) {
-        await interaction.editReply(
+        errEmbed.setDescription(
           `You are not allowed to timeout that user. They are the server owner`
         )
+        await interaction.editReply({
+          embeds: [errEmbed],
+        })
         return
       }
 
       const msDuration = ms(duration)
       if (isNaN(msDuration)) {
-        await interaction
-          .editReply('Please provide a valid time duration')
-          .then((msg) => {
-            setTimeout(() => {
-              msg.delete()
-            }, 10000)
-          })
+        errEmbed.setDescription(`Please provide a valid time duration`)
+        await interaction.editReply({ embeds: [errEmbed] })
         return
       }
 
       if (msDuration < 5000 || msDuration > 2419200000) {
-        await interaction
-          .editReply('Timeout duration must be between 5 seconds and 28 days')
-          .then((msg) => {
-            setTimeout(() => {
-              msg.delete()
-            }, 10000)
-          })
+        errEmbed.setDescription(
+          `The timeout duration must be between 5 seconds and 28 days`
+        )
+        await interaction.editReply({ embeds: [errEmbed] })
         return
       }
 
@@ -89,16 +95,22 @@ module.exports = {
         interaction.guild.members.me.roles.highest.position
 
       if (targetUserRolePosition >= requestUserRolePosition) {
-        await interaction.editReply(
+        errEmbed.setDescription(
           'You cannot timeout someone higher than or equal to you.'
         )
+        await interaction.editReply({
+          embeds: [errEmbed],
+        })
         return
       }
 
       if (targetUserRolePosition >= botRolePosition) {
-        await interaction.editReply(
+        errEmbed.setDescription(
           'I cannot timeout someone higher than or equal to me.'
         )
+        await interaction.editReply({
+          embeds: [errEmbed],
+        })
         return
       }
 
