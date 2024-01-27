@@ -21,6 +21,7 @@ To chat, start by pinging the bot and follow it up with your prompt:
 - `server-info` : View some information about that server
 - `avatar` : Fetch user avatar
 - `banner` : Fetch user banner if they have one
+- `github-profile` : Fetch a github profile based on the given username
 
 ### Moderation commands
 
