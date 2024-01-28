@@ -4,13 +4,13 @@
   "devs": ["769105946034831390"],
   "botVersion": "1.0.0",
   "status": "Under development",
-  "totalCommands": "32",
+  "totalCommands": "33",
   "colors": {
     "purple": [155, 89, 182],
     "invis": [47, 49, 54],
     "red": [255, 51, 51],
     "green": [0, 255, 0],
-    "yellow" : [255, 204, 0],
+    "yellow": [255, 204, 0],
     "blue": [77, 148, 255]
   },
   "currencyEmotes": {

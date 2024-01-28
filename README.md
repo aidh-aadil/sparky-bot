@@ -55,6 +55,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `random-element` : Get some information about a random element in the periodic table
 - `emoji-enlarge` : Enlarges an emoji based on a URL or a server emoji
 - `movie-info` : Fetch some information about a movie
+- `would-you-rather` : Get a random would you rather question
 
 ### Economy system
 
