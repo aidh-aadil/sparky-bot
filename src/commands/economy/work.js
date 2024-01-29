@@ -1,6 +1,6 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
-const Cooldown = require('../../../schemas/Cooldown')
-const UserProfile = require('../../../schemas/userProfile')
+const Cooldown = require('../../schemas/Cooldown')
+const UserProfile = require('../../schemas/userProfile')
 const { colors, currencyEmotes } = require('../../../config.json')
 
 module.exports = {

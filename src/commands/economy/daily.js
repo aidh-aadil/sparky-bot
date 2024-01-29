@@ -1,5 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
-const UserProfile = require('../../../schemas/userProfile')
+const UserProfile = require('../../schemas/userProfile')
 const { colors, currencyEmotes } = require('../../../config.json')
 
 const dailyAmount = 1000
@@ -12,7 +12,6 @@ module.exports = {
 
   async execute(interaction) {
     try {
-
       await interaction.deferReply()
 
       let userProfile = await UserProfile.findOne({
