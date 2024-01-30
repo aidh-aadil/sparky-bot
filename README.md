@@ -28,10 +28,11 @@ To chat, start by pinging the bot and follow it up with your prompt:
 - `ban` : Ban a user from that server
 - `kick` : Kick a user from that server
 - `warn` : Warn a user
-- `lock` : Lock a channel in the current server.
-- `unlock` : Unlock a locked channel.
+- `lock` : Lock a channel in the current server
+- `unlock` : Unlock a locked channel
 - `purge` : Clear a bulk of messages
 - `timeout` : Timeout a user
+- `slowmode` : Set slowmode for a text channel in the current server
 
 ### Image generation
 
