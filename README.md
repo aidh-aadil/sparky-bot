@@ -59,6 +59,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `movie-info` : Fetch some information about a movie
 - `would-you-rather` : Get a random would you rather question
 - `who-would-win` : Generate a WhoWouldWin meme based on your input
+- `coinflip` : Flip a coin
 
 ### Economy system
 
