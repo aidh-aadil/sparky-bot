@@ -57,7 +57,7 @@ module.exports = {
       }
 
       if (targetUser.id == interaction.member.id) {
-        errEmbed.setDescription(`You cannot timeout yourself. Bozo!`)
+        errEmbed.setDescription(`You cannot timeout yourself`)
         await interaction.editReply({
           embeds: [errEmbed],
         })
@@ -96,7 +96,7 @@ module.exports = {
 
       if (targetUserRolePosition >= requestUserRolePosition) {
         errEmbed.setDescription(
-          'You cannot timeout someone higher than or equal to you.'
+          'You cannot timeout someone higher than or equal to you'
         )
         await interaction.editReply({
           embeds: [errEmbed],
@@ -106,7 +106,7 @@ module.exports = {
 
       if (targetUserRolePosition >= botRolePosition) {
         errEmbed.setDescription(
-          'I cannot timeout someone higher than or equal to me.'
+          'I cannot timeout someone higher than or equal to me'
         )
         await interaction.editReply({
           embeds: [errEmbed],
@@ -119,6 +119,21 @@ module.exports = {
         text: `Reason: ${reason}\nModerator: ${
           interaction.user.username
         }\nDuration: ${prettyMs(msDuration)}`,
+      })
+
+      const dmEmbed = new EmbedBuilder()
+        .setColor(colors.red)
+        .setTitle(`You have been timed out!`)
+        .setDescription(
+          `Reason: ${reason}\nServer: ${
+            interaction.guild.name
+          }\nDuration: ${prettyMs(msDuration)}`
+        )
+
+      if (!targetUser.dmChannel) await targetUser.createDM()
+
+      await targetUser.dmChannel.send({
+        embeds: [dmEmbed],
       })
 
       if (targetUser.isCommunicationDisabled()) {

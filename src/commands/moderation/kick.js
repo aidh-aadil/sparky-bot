@@ -37,7 +37,7 @@ module.exports = {
       }
 
       if (targetUser.id == interaction.member.id) {
-        errEmbed.setDescription(`You cannot kick yourself. Bozo!`)
+        errEmbed.setDescription(`You cannot kick yourself`)
         await interaction.editReply({ embeds: [errEmbed] })
         return
       }
@@ -57,7 +57,7 @@ module.exports = {
 
       if (targetUserRolePosition >= requestUserRolePosition) {
         errEmbed.setDescription(
-          'You cannot kick someone higher than or equal to you.'
+          'You cannot kick someone higher than or equal to you'
         )
         await interaction.editReply({ embeds: [errEmbed] })
         return
@@ -65,7 +65,7 @@ module.exports = {
 
       if (targetUserRolePosition >= botRolePosition) {
         errEmbed.setDescription(
-          'I cannot kick someone higher than or equal to me.'
+          'I cannot kick someone higher than or equal to me'
         )
         await interaction.editReply({ embeds: [errEmbed] })
         return
@@ -75,6 +75,17 @@ module.exports = {
 
       const embed = new EmbedBuilder().setColor(colors.red).setFooter({
         text: `Reason: ${reason}\nModerator: ${interaction.user.username}`,
+      })
+
+      const dmEmbed = new EmbedBuilder()
+        .setColor(colors.red)
+        .setTitle(`You have been kicked out!`)
+        .setDescription(`Reason: ${reason}\nServer: ${interaction.guild.name}`)
+
+      if (!targetUser.dmChannel) await targetUser.createDM()
+
+      await targetUser.dmChannel.send({
+        embeds: [dmEmbed],
       })
 
       await interaction.editReply({

@@ -54,7 +54,7 @@ module.exports = {
 
       const dmEmbed = new EmbedBuilder()
         .setColor(colors.red)
-        .setTitle(`Your timeout have been removed!`)
+        .setTitle(`Your timeout has been removed!`)
         .setDescription(`Server: ${interaction.guild.name}`)
 
       if (!targetUser.dmChannel) await targetUser.createDM()
