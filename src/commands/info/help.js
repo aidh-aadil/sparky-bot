@@ -105,30 +105,34 @@ module.exports = {
         for (const file of files) {
           const command = require(`./../${folder}/${file}`)
           let name = `${command.data.name}`
-          let commandId = await interaction.client.application.commands
-            .fetch()
-            .then(
-              (commands) => commands.find((command) => command.name === name).id
-            )
 
-          // Make sure to update command categories
-          if (folder === 'info') {
-            infoField.push(`</${name}:${commandId}>`)
-          }
-          if (folder === 'fun') {
-            funField.push(`</${name}:${commandId}>`)
-          }
-          if (folder === 'economy') {
-            economyField.push(`</${name}:${commandId}>`)
-          }
-          if (folder === 'moderation') {
-            moderationField.push(`</${name}:${commandId}>`)
-          }
-          if (folder === 'image') {
-            imageField.push(`</${name}:${commandId}>`)
-          }
-          if (folder === 'music') {
-            musicField.push(`</${name}:${commandId}>`)
+          // Handle errors when fetching the command ID in case the command is not registered
+          try {
+            let commandId = await interaction.client.application.commands
+              .fetch()
+              .then((commands) => commands.find((cmd) => cmd.name === name).id)
+
+            // Make sure to update command categories
+            if (folder === 'info') {
+              infoField.push(`</${name}:${commandId}>`)
+            }
+            if (folder === 'fun') {
+              funField.push(`</${name}:${commandId}>`)
+            }
+            if (folder === 'economy') {
+              economyField.push(`</${name}:${commandId}>`)
+            }
+            if (folder === 'moderation') {
+              moderationField.push(`</${name}:${commandId}>`)
+            }
+            if (folder === 'image') {
+              imageField.push(`</${name}:${commandId}>`)
+            }
+            if (folder === 'music') {
+              musicField.push(`</${name}:${commandId}>`)
+            }
+          } catch (error) {
+            console.error(`Error fetching ID for ${name}: ${error.message}`)
           }
         }
       }
@@ -203,13 +207,17 @@ module.exports = {
         const command = require(`./../${category}/${file}`)
         let name = `${command.data.name}`
         let description = `${command.data.description}`
-        let commandId = await interaction.client.application.commands
-          .fetch()
-          .then(
-            (commands) => commands.find((command) => command.name === name).id
-          )
 
-        embedDescription.push(`</${name}:${commandId}> \n> ${description}`)
+        // Handle errors when fetching the command ID in case the command is not registered
+        try {
+          let commandId = await interaction.client.application.commands
+            .fetch()
+            .then((commands) => commands.find((cmd) => cmd.name === name).id)
+
+          embedDescription.push(`</${name}:${commandId}> \n> ${description}`)
+        } catch (error) {
+          console.error(`Error fetching ID for ${name}: ${error.message}`)
+        }
       }
 
       const categoryEmbed = new EmbedBuilder()
