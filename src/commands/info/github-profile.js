@@ -35,7 +35,6 @@ module.exports = {
       const errEmbed = new EmbedBuilder()
         .setColor(colors.red)
         .setDescription(`**${user}**: ${info['error']}`)
-        .setFooter({ text: `Try to be more specific` })
 
       if (info['error']) {
         return await interaction.editReply({ embeds: [errEmbed] })

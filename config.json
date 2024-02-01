@@ -4,7 +4,7 @@
   "devs": ["769105946034831390"],
   "botVersion": "1.0.0",
   "status": "Under development",
-  "totalCommands": "38",
+  "totalCommands": "39",
   "colors": {
     "purple": [155, 89, 182],
     "invis": [47, 49, 54],
@@ -14,6 +14,16 @@
     "blue": [77, 148, 255]
   },
   "currencyEmotes": {
-    "money": "<:money:1193468140315738153> "
+    "money": "<:money:1202212223611572234>"
+  },
+  "emotes": {
+    "info": "<:S_info:1202211307856871424>",
+    "moderation" : "<:S_moderation:1202215096500363325>",
+    "fun" : "<:S_fun:1202216120266788924>",
+    "economy" : "<:S_economy:1202224025451896874>",
+    "imageGeneration": "<:S_image:1202221380544757800>",
+    "music": "<:S_music:1202219570325102603>",
+    "category" : "<:S_category:1202229891794481183>",
+    "link" : "<:S_link:1202230396176048198>"
   }
 }

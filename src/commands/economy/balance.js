@@ -40,9 +40,6 @@ module.exports = {
         .setDescription(
           `Balance: ${currencyEmotes.money} ${userProfile.balance}`
         )
-        .setFooter({
-          text: `Fact: I am open-source`,
-        })
 
       await interaction.editReply({
         embeds: [embed],

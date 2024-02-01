@@ -15,6 +15,7 @@ To chat, start by pinging the bot and follow it up with your prompt:
 
 ### Info commands
 
+- `help` : View the help menu
 - `ping` : View bot latency
 - `bot-info` : View some information about the bot
 - `user-info` : Fetch some information about user
