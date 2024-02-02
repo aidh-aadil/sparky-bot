@@ -5,7 +5,6 @@ const {
   ChannelType,
 } = require('discord.js')
 const { colors } = require('../../../config.json')
-const ms = require('ms')
 
 module.exports = {
   data: new SlashCommandBuilder()
