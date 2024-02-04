@@ -65,7 +65,7 @@ module.exports = {
 
       if (channel.type === 4) {
         embed
-          .setTitle(`${channel.name}`)
+          .setTitle(`📁 ${channel.name}`)
           .setThumbnail(interaction.guild.iconURL())
           .addFields([
             { name: 'ID', value: channel.id },
