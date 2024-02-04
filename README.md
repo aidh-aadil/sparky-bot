@@ -36,6 +36,7 @@ To chat, start by pinging the bot and follow it up with your prompt:
 - `timeout` : Timeout a user
 - `slowmode` : Set slowmode for a text channel in the current server
 - `untimeout` : Remove timeout from a timed out user
+- `unban` : Unban a user using their ID
 
 ### Image generation
 
