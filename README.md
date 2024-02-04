@@ -63,6 +63,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `would-you-rather` : Get a random would you rather question
 - `who-would-win` : Generate a WhoWouldWin meme based on your input
 - `coinflip` : Flip a coin
+- `let-me-google-that` : Search google for something using [let me google that](https://letmegooglethat.com/) meme
 
 ### Economy system
 
