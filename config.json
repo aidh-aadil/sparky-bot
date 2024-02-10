@@ -4,7 +4,7 @@
   "devs": ["769105946034831390"],
   "botVersion": "1.0.0",
   "status": "Under development",
-  "totalCommands": "42",
+  "totalCommands": "43",
   "colors": {
     "purple": [155, 89, 182],
     "invis": [47, 49, 54],
@@ -24,6 +24,7 @@
     "imageGeneration": "<:S_image:1202221380544757800>",
     "music": "<:S_music:1202219570325102603>",
     "category" : "<:S_category:1202229891794481183>",
-    "link" : "<:S_link:1202230396176048198>"
+    "link" : "<:S_link:1202230396176048198>",
+    "settings": "<:S_settings:1205481649077223505> "
   }
 }
