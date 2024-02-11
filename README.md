@@ -65,6 +65,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `who-would-win` : Generate a WhoWouldWin meme based on your input
 - `coinflip` : Flip a coin
 - `let-me-google-that` : Search google for something using [let me google that](https://letmegooglethat.com/) meme
+- `encode-binary` : Encode your input into binary digits
 
 ### Economy system
 
