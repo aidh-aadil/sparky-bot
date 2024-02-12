@@ -66,6 +66,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `coinflip` : Flip a coin
 - `let-me-google-that` : Search google for something using [let me google that](https://letmegooglethat.com/) meme
 - `encode-binary` : Encode your input into binary digits
+- `decode-binary` : Decode binary digits into text
 
 ### Economy system
 
