@@ -67,6 +67,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `let-me-google-that` : Search google for something using [let me google that](https://letmegooglethat.com/) meme
 - `encode-binary` : Encode your input into binary digits
 - `decode-binary` : Decode binary digits into text
+- `trivia` : Get a random trivia question according to your desired difficulty and category
 
 ### Economy system
 

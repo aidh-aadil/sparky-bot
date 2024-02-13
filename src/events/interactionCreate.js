@@ -18,12 +18,14 @@ module.exports = {
       console.error(error)
       if (interaction.replied || interaction.deferred) {
         await interaction.followUp({
-          content: 'There was an error while executing this command!',
+          content:
+            'You are unable to interact with this command due to a minor issue. This may cause due to traffic when processing requests',
           ephemeral: true,
         })
       } else {
         await interaction.reply({
-          content: 'There was an error while executing this command!',
+          content:
+            'You are unable to interact with this command due to a minor issue. This may cause due to traffic when processing requests',
           ephemeral: true,
         })
       }
