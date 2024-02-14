@@ -16,7 +16,7 @@ module.exports = {
       option
         .setName('channel')
         .setDescription('The channel you want to lock')
-        .addChannelTypes(ChannelType.GuildText)
+        .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
         .setRequired(false)
     ),
   async execute(interaction) {
