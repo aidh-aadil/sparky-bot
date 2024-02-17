@@ -146,47 +146,62 @@ module.exports = {
       embeds: [embed],
       components: [row],
     })
+
     try {
-      const userInteraction = await reply.awaitMessageComponent({
-        filter: (i) => i.user.id === interaction.user.id,
+      const collector = reply.createMessageComponentCollector({
         time: 15_000,
       })
+      collector.on('collect', async (i) => {
+        if (i.user.id === interaction.user.id) {
+          if (i.customId === correctAnswer) {
+            embed
+              .setColor(colors.green)
+              .setFooter({
+                text: `You got it right!`,
+              })
+              .setDescription(
+                `${question}\n\nYou're answer is correct!\nIt is ${correctAnswer}`
+              )
 
-      const userAnswer = userInteraction.customId
+            await reply.edit({ embeds: [embed], components: [] })
+            await reply.react('✅')
 
-      if (userAnswer === correctAnswer) {
-        embed
-          .setColor(colors.green)
-          .setFooter({
-            text: `You got it right!`,
+            await collector.stop()
+          } else {
+            embed
+              .setColor(colors.red)
+              .setFooter({
+                text: `You got it wrong!`,
+              })
+              .setDescription(
+                `${question}\n\nYou're answer ${i.customId} is incorrect!\nThe correct answer is ${correctAnswer}`
+              )
+            await reply.edit({ embeds: [embed], components: [] })
+            await reply.react('❌')
+
+            await collector.stop()
+          }
+        } else {
+          await i.reply({
+            content: 'You should run this command to use this interaction',
+            ephemeral: true,
           })
-          .setDescription(
-            `${question}\n\nYou're answer is correct!\nIt is ${correctAnswer}`
-          )
-
-        await reply.edit({ embeds: [embed], components: [] })
-        await reply.react('✅')
-      } else {
-        embed
-          .setColor(colors.red)
-          .setFooter({
-            text: `You got it wrong!`,
-          })
-          .setDescription(
-            `${question}\n\nYou're answer ${userAnswer} is incorrect!\nThe correct answer is ${correctAnswer}`
-          )
-        await reply.edit({ embeds: [embed], components: [] })
-        await reply.react('❌')
-      }
+        }
+      })
+      collector.on('end', async (collected, reason) => {
+        if (reason === 'time') {
+          embed
+            .setColor(colors.red)
+            .setFooter({
+              text: `You failed to answer within 15 seconds!`,
+            })
+            .setDescription(`${question}\n\nThe answer is ${correctAnswer}`)
+          await reply.edit({ embeds: [embed], components: [] })
+          await reply.react('⌛')
+        }
+      })
     } catch (error) {
-      embed
-        .setColor(colors.red)
-        .setFooter({
-          text: `You failed to answer within 15 seconds!`,
-        })
-        .setDescription(`${question}\n\nThe answer is ${correctAnswer}`)
-      await reply.edit({ embeds: [embed], components: [] })
-      await reply.react('⌛')
+      console.log(error)
     }
   },
 }
