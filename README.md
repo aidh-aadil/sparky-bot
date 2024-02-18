@@ -76,6 +76,10 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `work` : Get some bot-cash
 - `balance`: View user balance
 
+### Star System
+
+- `star` : Give a star to a user you like
+
 ### Music System
 
 - `lyrics` : Fetch lyrics for a song

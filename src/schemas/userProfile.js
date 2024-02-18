@@ -10,6 +10,13 @@ const userProfileSchema = new Schema(
       type: String,
       required: true,
     },
+    stars: {
+      type: Number,
+      default: 0,
+    },
+    lastStarGiven: {
+      type: Date,
+    },
     balance: {
       type: Number,
       default: 0,
