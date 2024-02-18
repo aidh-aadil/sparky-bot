@@ -79,6 +79,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 ### Star System
 
 - `star` : Give a star to a user you like
+- `star-count` : View how many stars a user has received to know how much others like him/her
 
 ### Music System
 
