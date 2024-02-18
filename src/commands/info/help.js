@@ -30,7 +30,8 @@ module.exports = {
           { name: 'Economy', value: 'economy' },
           { name: 'Moderation', value: 'moderation' },
           { name: 'Image Generation', value: 'image' },
-          { name: 'Music', value: 'music' }
+          { name: 'Music', value: 'music' },
+          { name: 'Star', value: 'star' }
         )
     ),
 
@@ -54,6 +55,8 @@ module.exports = {
         'https://cdn.discordapp.com/emojis/1202219570325102603.png'
       const economyImage =
         'https://cdn.discordapp.com/emojis/1202224025451896874.png'
+      const starImage =
+        'https://cdn.discordapp.com/emojis/1208647136883777616.png'
 
       function getCategoryNameForMainMenu(choice) {
         // Make sure to update command categories
@@ -64,7 +67,8 @@ module.exports = {
           return `> ${emotes.moderation} Moderation\n> `
         if (choice === 'image')
           return `> ${emotes.imageGeneration} Image Generation\n> `
-        if (choice === 'music') return `> ${emotes.music} Music `
+        if (choice === 'music') return `> ${emotes.music} Music \n`
+        if (choice === 'star') return `> ${emotes.star} Star `
       }
 
       function getCategoryTitle(choice) {
@@ -75,6 +79,7 @@ module.exports = {
         if (choice === 'moderation') return `Moderation`
         if (choice === 'image') return `Image Generation`
         if (choice === 'music') return `Music`
+        if (choice === 'star') return 'Star'
       }
 
       function getCategoryImage(choice) {
@@ -85,6 +90,7 @@ module.exports = {
         if (choice === 'moderation') return moderationImage
         if (choice === 'image') return imageGenerationImage
         if (choice === 'music') return musicImage
+        if (choice === 'star') return starImage
       }
 
       // Make sure to update command categories
@@ -94,6 +100,7 @@ module.exports = {
       let moderationField = []
       let imageField = []
       let musicField = []
+      let starField = []
 
       for (const [index, folder] of fs
         .readdirSync('./src/commands')
@@ -131,6 +138,9 @@ module.exports = {
             if (folder === 'music') {
               musicField.push(`</${name}:${commandId}>`)
             }
+            if (folder === 'star') {
+              starField.push(`</${name}:${commandId}>`)
+            }
           } catch (error) {
             console.error(`Error fetching ID for ${name}: ${error.message}`)
           }
@@ -164,6 +174,7 @@ module.exports = {
             value: `${imageField.join(', ')}`,
           },
           { name: `${emotes.music} Music`, value: `${musicField.join(', ')}` },
+          { name: `${emotes.star} Star`, value: `${starField.join(', ')}` },
         ])
 
       if (commandList === true) {
