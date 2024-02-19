@@ -12,12 +12,6 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('help')
     .setDescription('View the help menu')
-    .addBooleanOption((option) =>
-      option
-        .setName('command-list')
-        .setRequired(false)
-        .setDescription('View the full command list')
-    )
     .addStringOption((option) =>
       option
         .setName('category')
@@ -41,8 +35,6 @@ module.exports = {
 
       const category =
         (await interaction.options.getString('category')) || 'None'
-      const commandList =
-        (await interaction.options.getBoolean('command-list')) || false
 
       const infoImage = 'https://i.imgur.com/Q9zmFCj.png'
       const moderationImage =
@@ -67,7 +59,7 @@ module.exports = {
           return `> ${emotes.moderation} Moderation\n> `
         if (choice === 'image')
           return `> ${emotes.imageGeneration} Image Generation\n> `
-        if (choice === 'music') return `> ${emotes.music} Music \n`
+        if (choice === 'music') return `> ${emotes.music} Music \n> `
         if (choice === 'star') return `> ${emotes.star} Star `
       }
 
@@ -150,9 +142,7 @@ module.exports = {
       const cmdListEmbed = new EmbedBuilder()
         .setColor(colors.invis)
         .setTitle('Command List')
-        .setDescription(
-          `\`/help [category] - View specific category\n/help [command-list] - View full command list\``
-        )
+        .setDescription(`\`/help [category] - View specific category\``)
         .setAuthor({
           name: 'Sparky Bot HelpDesk',
           iconURL: interaction.client.user.avatarURL(),
@@ -177,35 +167,78 @@ module.exports = {
           { name: `${emotes.star} Star`, value: `${starField.join(', ')}` },
         ])
 
-      if (commandList === true) {
-        return await interaction.editReply({ embeds: [cmdListEmbed] })
-      }
-
-      const mainMenuEmbed = new EmbedBuilder()
-        .setColor(colors.invis)
-        .setDescription(
-          '`/help [category] - View specific category\n/help [command-list] - View full command list`'
-        )
-        .setAuthor({
-          name: 'Sparky Bot HelpDesk',
-          iconURL: interaction.client.user.avatarURL(),
-        })
-        .addFields([
-          {
-            name: `${emotes.category} Categories`,
-            value: `${fs
-              .readdirSync('./src/commands')
-              .map(getCategoryNameForMainMenu)
-              .join('\n')}`,
-          },
-          {
-            name: `${emotes.link} Links`,
-            value: `> [Support Server](https://discord.gg/TNE72AtH7y) | [GitHub Repository](https://github.com/aidh-aadil/sparky-bot)`,
-          },
-        ])
-
       if (category === 'None') {
-        return await interaction.editReply({ embeds: [mainMenuEmbed] })
+        const mainMenuEmbed = new EmbedBuilder()
+          .setColor(colors.invis)
+          .setDescription('`/help [category] - View specific category`')
+          .setAuthor({
+            name: 'Sparky Bot HelpDesk',
+            iconURL: interaction.client.user.avatarURL(),
+          })
+          .addFields([
+            {
+              name: `${emotes.category} Categories`,
+              value: `${fs
+                .readdirSync('./src/commands')
+                .map(getCategoryNameForMainMenu)
+                .join('\n')}`,
+            },
+            {
+              name: `${emotes.link} Links`,
+              value: `> [Support Server](https://discord.gg/TNE72AtH7y) | [GitHub Repository](https://github.com/aidh-aadil/sparky-bot)`,
+            },
+          ])
+        const cmdListButton = new ButtonBuilder()
+          .setLabel('Command List')
+          .setStyle(ButtonStyle.Secondary)
+          .setCustomId('cmdList')
+          .setEmoji('<:S_cmdlist:1208690790096699422>"')
+
+        const mainMenuBtn = new ButtonBuilder()
+          .setLabel('Home')
+          .setStyle(ButtonStyle.Secondary)
+          .setCustomId('home')
+          .setEmoji('<:S_home:1208707747361857536>')
+
+        const rowWithCmdBtn = new ActionRowBuilder().addComponents(
+          cmdListButton
+        )
+        const rowWithHomeBtn = new ActionRowBuilder().addComponents(mainMenuBtn)
+        const reply = await interaction.editReply({
+          embeds: [mainMenuEmbed],
+          components: [rowWithCmdBtn],
+        })
+
+        const collector = reply.createMessageComponentCollector({
+          time: 60_000 * 5,
+        })
+        collector.on('collect', async (i) => {
+          if (i.user.id === interaction.user.id) {
+            if (i.customId === 'cmdList') {
+              await i.update({
+                embeds: [cmdListEmbed],
+                components: [rowWithHomeBtn],
+              })
+            }
+            if (i.customId === 'home') {
+              await i.update({
+                embeds: [mainMenuEmbed],
+                components: [rowWithCmdBtn],
+              })
+            }
+          } else {
+            await i.reply({
+              content: 'You should run the command to use this interaction',
+              ephemeral: true,
+            })
+          }
+        })
+        collector.on('end', async (collected, reason) => {
+          if (reason === 'time') {
+            await reply.edit({ components: [] })
+          }
+        })
+        return
       }
 
       let embedDescription = []
