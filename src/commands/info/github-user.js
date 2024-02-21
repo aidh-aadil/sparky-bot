@@ -1,15 +1,9 @@
-const {
-  EmbedBuilder,
-  SlashCommandBuilder,
-  ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-} = require('discord.js')
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js')
 const { colors } = require('../../../config.json')
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('github-profile')
+    .setName('github-user')
     .setDMPermission(false)
     .setDescription('Fetch some information about a github user')
     .addStringOption((option) =>
@@ -26,10 +20,6 @@ module.exports = {
       const user = await interaction.options.getString('user')
 
       const url = await fetch(`https://api.popcat.xyz/github/${user}`)
-      const githubStreak = `https://github-readme-streak-stats.herokuapp.com/?user=${user}&stroke=ffffff&background=1c1917&ring=f97316&fire=f97316&currStreakNum=ffffff&currStreakLabel=f97316&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true`
-      const githubStats = `https://github-readme-stats.vercel.app/api?username=${user}&show_icons=true&hide=&count_private=true&title_color=f97316&text_color=ffffff&icon_color=f97316&bg_color=1c1917&hide_border=true&show_icons=true`
-      const githubTopLangs = `https://github-readme-stats.vercel.app/api/top-langs/?username=${user}&langs_count=10&title_color=ffffff&text_color=ffffff&icon_color=f97316&bg_color=1c1917&hide_border=true&locale=en&custom_title=Top%20Languages`
-
       let info = await url.json()
 
       const errEmbed = new EmbedBuilder()
@@ -59,7 +49,7 @@ module.exports = {
 
       const options = {
         year: 'numeric',
-        month: 'long',
+        month: 'short',
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
@@ -74,29 +64,8 @@ module.exports = {
 
       const formattedDate = date.toLocaleString('en-US', options)
 
-      const streakBtn = new ButtonBuilder()
-        .setLabel('GitHub Streak')
-        .setStyle(ButtonStyle.Link)
-        .setURL(githubStreak)
-
-      const statsBtn = new ButtonBuilder()
-        .setLabel('GitHub Stats')
-        .setStyle(ButtonStyle.Link)
-        .setURL(githubStats)
-
-      const topLangBtn = new ButtonBuilder()
-        .setLabel('Top Languages')
-        .setStyle(ButtonStyle.Link)
-        .setURL(githubTopLangs)
-
-      const row = new ActionRowBuilder().addComponents(
-        streakBtn,
-        statsBtn,
-        topLangBtn
-      )
-
       const embed = new EmbedBuilder()
-        .setColor(colors.yellow)
+        .setColor(colors.invis)
         .setThumbnail(thumbnail)
         .setDescription(`**[${name}](${profileUrl})**`)
         .setFooter({
@@ -115,7 +84,6 @@ module.exports = {
 
       await interaction.editReply({
         embeds: [embed],
-        components: [row],
       })
     } catch (error) {
       await interaction.editReply('Oops! There was an error.').then((msg) => {
