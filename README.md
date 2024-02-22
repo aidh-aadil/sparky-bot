@@ -71,6 +71,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `decode-binary` : Decode binary digits into text
 - `trivia` : Get a random trivia question according to your desired difficulty and category
 - `random-quote` : Get a random quote
+- `random-color` : Get a random color
 
 ### Economy system
 
