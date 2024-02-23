@@ -56,7 +56,6 @@ module.exports = {
       const language = info['language']
       const isArchived = info['archived']
       const size = info['size']
-      const defaultBranch = info['default_branch']
 
       const options = {
         year: 'numeric',
@@ -90,7 +89,10 @@ module.exports = {
         .setDescription(`**[${name}](${repoUrl})**`)
         .setThumbnail(thumbnail)
         .addFields([
-          { name: 'Description', value: description },
+          {
+            name: 'Description',
+            value: description ? description : 'No description',
+          },
           { name: 'Visibility', value: visibility, inline: true },
           {
             name: 'Owner',
@@ -105,7 +107,11 @@ module.exports = {
           },
           { name: 'Stars', value: `${stars}`, inline: true },
           { name: 'Size', value: `${size}KB`, inline: true },
-          { name: 'Default branch', value: defaultBranch, inline: true },
+          {
+            name: 'Default branch',
+            value: info['default_branch'] ? info['default_branch'] : 'None',
+            inline: true,
+          },
           { name: 'Forks', value: `${forksCount}`, inline: true },
           { name: 'Open issues', value: `${openIssuesCount}`, inline: true },
           { name: 'Archived?', value: `${isArchived}`, inline: true },
