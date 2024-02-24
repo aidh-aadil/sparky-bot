@@ -52,6 +52,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `meme` : Generates a random meme
 - `car` : Get a random car image
 - `dog` : Get a random dog image
+- `pikachu-meme` : Generate a surprised pikachu meme
 
 ### Fun commands
 
