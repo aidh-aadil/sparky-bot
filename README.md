@@ -74,6 +74,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `random-quote` : Get a random quote
 - `random-color` : Get a random color
 - `echo` : Make the bot send a message in a channel
+- `color-hex` : Get information about a hex color
 
 ### Economy system
 
