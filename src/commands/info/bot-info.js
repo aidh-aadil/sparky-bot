@@ -1,10 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders')
-const {
-  botVersion,
-  status,
-  totalCommands,
-  colors,
-} = require('../../../config.json')
+const { botVersion, status, colors } = require('../../../config.json')
 const { version } = require('discord.js')
 const { execSync } = require('child_process')
 
@@ -22,6 +17,9 @@ module.exports = {
         (a, b) => a + b.memberCount,
         0
       )
+
+      const commands = await interaction.client.application.commands.fetch()
+      const totalCommands = commands.size
 
       const description = `\`\`\`fix\nDeveloper:   aidhaadil\nStatus:      ${status}\nLanguage:    JavaScript\nCreated on:  ${interaction.client.user.createdAt.toUTCString()}\nLast update: ${getLastCommitDate()}\`\`\``
 
