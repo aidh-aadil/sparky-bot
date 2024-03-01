@@ -76,6 +76,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `echo` : Make the bot send a message in a channel
 - `color-hex` : Get information about a hex color
 - `color-rgb` : Get information about a rgb color
+- `pickup-line` : Get a random pickup line
 
 ### Economy system
 
