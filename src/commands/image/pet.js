@@ -36,7 +36,8 @@ module.exports = {
         .setColor(colors.invis)
         .setTitle(`Pet meme of ${targetUser.user.username}`)
         .setImage('attachment://triggered.gif')
-      interaction.editReply({ files: [attachment], embeds: [embed] })
+
+      await interaction.editReply({ files: [attachment], embeds: [embed] })
     } catch (error) {
       await interaction.editReply('Oops! There was an error.').then((msg) => {
         setTimeout(() => {
