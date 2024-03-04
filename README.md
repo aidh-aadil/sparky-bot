@@ -55,6 +55,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `pikachu-meme` : Generate a surprised pikachu meme
 - `bite` : Generate a gif of you biting a user
 - `clap` : Generate a gif to show that you are clapping
+- `confused` : Generate a gif to show that you are confused
 
 ### Fun commands
 
