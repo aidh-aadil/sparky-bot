@@ -57,6 +57,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `clap` : Generate a gif to show that you are clapping
 - `confused` : Generate a gif to show that you are confused
 - `facepalm` : Generate a gif to show that you are facepalming
+- `fist-bump` : Generate a gif of you fist bumping a user
 
 ### Fun commands
 
