@@ -58,6 +58,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `confused` : Generate a gif to show that you are confused
 - `facepalm` : Generate a gif to show that you are facepalming
 - `fist-bump` : Generate a gif of you fist bumping a user
+- `hug` : Generate a gif of you hugging a user
 
 ### Fun commands
 
