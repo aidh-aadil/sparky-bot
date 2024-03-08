@@ -59,6 +59,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `facepalm` : Generate a gif to show that you are facepalming
 - `fist-bump` : Generate a gif of you fist bumping a user
 - `hug` : Generate a gif of you hugging a user
+- `kiss` : Generate a gif of you kissing a user
 
 ### Fun commands
 
