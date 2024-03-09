@@ -60,6 +60,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `fist-bump` : Generate a gif of you fist bumping a user
 - `hug` : Generate a gif of you hugging a user
 - `kiss` : Generate a gif of you kissing a user
+- `punch` : Generate a gif of you punching a user
 
 ### Fun commands
 
