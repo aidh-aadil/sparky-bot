@@ -61,6 +61,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `hug` : Generate a gif of you hugging a user
 - `kiss` : Generate a gif of you kissing a user
 - `punch` : Generate a gif of you punching a user
+- `shrug` : Generate a gif to show that you are shrugging
 
 ### Fun commands
 
