@@ -63,6 +63,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `punch` : Generate a gif of you punching a user
 - `shrug` : Generate a gif to show that you are shrugging
 - `slap` : Generate a gif of you slapping a user
+- `sleep` : Generate a gif to show that you are asleep
 
 ### Fun commands
 
