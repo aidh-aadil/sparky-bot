@@ -65,6 +65,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `slap` : Generate a gif of you slapping a user
 - `sleep` : Generate a gif to show that you are asleep
 - `smile` : Generate a gif to show that you are smiling
+- `thumbsup` : Generate a gif to show that you are thumbs upping
 
 ### Fun commands
 
