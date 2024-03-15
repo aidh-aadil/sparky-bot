@@ -66,6 +66,7 @@ _Note: Some of these image manipulation commands might not work due to API error
 - `sleep` : Generate a gif to show that you are asleep
 - `smile` : Generate a gif to show that you are smiling
 - `thumbsup` : Generate a gif to show that you are thumbs upping
+- `tired` : Generate a gif to show that you are tired
 
 ### Fun commands
 
