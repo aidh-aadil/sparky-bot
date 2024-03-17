@@ -14,7 +14,7 @@ module.exports = {
 
       const description = `\`\`\`fix\nPing:   ${
         sent.createdTimestamp - interaction.createdTimestamp
-      }ms\nWS:     ${
+      } ms\nWS:     ${
         interaction.client.ws.ping
       } ms\nUptime: ${uptime}\nNode:   ${
         process.version
