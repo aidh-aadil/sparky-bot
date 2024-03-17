@@ -7,7 +7,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('work')
     .setDMPermission(false)
-    .setDescription('Get some bot-cash'),
+    .setDescription('Get some bot currency'),
 
   async execute(interaction) {
     try {
@@ -21,7 +21,7 @@ module.exports = {
 
       if (cooldown && Date.now() < cooldown.endsAt) {
         const cooldownEmbed = new EmbedBuilder()
-          .setColor(colors.purple)
+          .setColor(colors.red)
           .setDescription('Woah! Calm down there. You are on cooldown.')
           .setFooter({
             text: `Cooldown ends in ${getCooldownRemaining(
@@ -56,15 +56,15 @@ module.exports = {
 
       const workResponses = [
         `You perfected the art of procrastination and received ${currencyEmotes.money} ${amount}.`,
-        `You mastered the ancient technique of staring at the screen and pretended to be productive. You received ${currencyEmotes.money} ${amount}.`,
-        `You made an industry-scale application using only HTML. You received ${currencyEmotes.money} ${amount} (from your mom).`,
+        `My code malfunctioned and accidentally credited your account with ${currencyEmotes.money} ${amount}. Don't tell the developer...`,
         `Your dad gifted you ${currencyEmotes.money} ${amount}.`,
         `You invested in crypto and received ${currencyEmotes.money} ${amount}.`,
         `You broke into your own house and found ${currencyEmotes.money} ${amount}.`,
-        `You snuck into a millionaire's party. He paid you to leave. Easy ${currencyEmotes.money} ${amount}`,
-        `Today's work involved mastering the art of juggling coffee cups. Here's a tip for your effort ${currencyEmotes.money} ${amount}.`,
-        `You accidentally fixed a bug while trying to create a new one. You received ${currencyEmotes.money} ${amount}.`,
-        `Successfully negotiated a peace treaty between the office plants. You earned ${currencyEmotes.money} ${amount}.`,
+        `You snuck into a millionaire's party. He paid you to leave. Easy ${currencyEmotes.money} ${amount}.`,
+        `I spilled coffee on my circuits and somehow managed to generate ${currencyEmotes.money} ${amount} for you. Don't expect this to happen again.`,
+        `My developer got generous and sent you ${currencyEmotes.money} ${amount}.`,
+        `Wow, you actually worked. Here's your ${currencyEmotes.money} ${amount} (it's not much, but hey, capitalism).`,
+        `Another day, another dollar ${currencyEmotes.money} ${amount}`,
       ]
 
       function getRandomWorkResponse() {
@@ -75,12 +75,6 @@ module.exports = {
       const workCollectedEmbed = new EmbedBuilder()
         .setColor(colors.purple)
         .setDescription(getRandomWorkResponse())
-        .setFooter({
-          text: `Work again in ${getCooldownRemaining(
-            cooldown.endsAt,
-            Date.now()
-          )}`,
-        })
 
       await interaction.editReply({
         embeds: [workCollectedEmbed],
@@ -97,6 +91,8 @@ module.exports = {
 }
 
 function getRandomNumber(min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
