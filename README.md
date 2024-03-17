@@ -96,8 +96,9 @@ _Note: Some of these image manipulation commands might not work due to API error
 ### Economy system
 
 - `daily` : Collect daily reward
-- `work` : Get some bot-cash
+- `work` : Get some bot currency
 - `balance`: View user balance
+- `beg` : Beg for some bot currency
 
 ### Star System
 
