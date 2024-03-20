@@ -26,9 +26,7 @@ module.exports = {
       const embed = new EmbedBuilder()
         .setColor(colors.purple)
         .setTitle(`Would you rather?`)
-        .setThumbnail(
-          'https://cdn.discordapp.com/attachments/1191439831633498176/1201093173846478868/VzOrijvOBa8SolzucMptZrXlWHAFXjIJSMn2xAvMJ_G8f0hJoPjnOOBqU2Jc6fn39Mw240-h480-rw.png?ex=65c8902f&is=65b61b2f&hm=ffb33ab22f834042c98f03e0d1013e53f6d49673340241a60d1db807e612ba19&'
-        )
+        .setThumbnail('https://i.imgur.com/Vierq0A.png')
         .setDescription(`1. **${option1}**\n or \n2. **${option2}**`)
 
       const reply = await interaction.editReply({ embeds: [embed] })

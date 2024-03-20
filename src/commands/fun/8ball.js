@@ -25,9 +25,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
         .setColor(colors.purple)
-        .setThumbnail(
-          'https://images-ext-2.discordapp.net/external/xdeZN98fGwa0eMeRNFqs-2d9jXi2nKE2LDsSeJlHopo/https/twemoji.maxcdn.com/v/latest/72x72/1f3b1.png?format=webp&quality=lossless'
-        )
+        .setThumbnail('https://i.imgur.com/Ho422zK.png')
         .setTitle(`Magic 8ball`)
         .addFields(
           { name: 'Question', value: `${question}` },

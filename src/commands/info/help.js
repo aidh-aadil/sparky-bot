@@ -37,18 +37,12 @@ module.exports = {
         (await interaction.options.getString('category')) || 'None'
 
       const infoImage = 'https://i.imgur.com/Q9zmFCj.png'
-      const moderationImage =
-        'https://cdn.discordapp.com/emojis/1202215096500363325.png'
-      const funImage =
-        'https://cdn.discordapp.com/emojis/1202216120266788924.png'
-      const imageGenerationImage =
-        'https://cdn.discordapp.com/emojis/916751742954246184.png'
-      const musicImage =
-        'https://cdn.discordapp.com/emojis/1202219570325102603.png'
-      const economyImage =
-        'https://cdn.discordapp.com/emojis/1202224025451896874.png'
-      const starImage =
-        'https://cdn.discordapp.com/emojis/1208647136883777616.png'
+      const moderationImage = 'https://i.imgur.com/pM0AwRu.png'
+      const funImage = 'https://i.imgur.com/9Xe4k8d.png'
+      const imageGenerationImage = 'https://i.imgur.com/cl5qBOr.png'
+      const musicImage = 'https://i.imgur.com/16w8752.png'
+      const economyImage = 'https://i.imgur.com/BD5OKrL.png'
+      const starImage = 'https://i.imgur.com/jfxkApk.png'
 
       function getCategoryNameForMainMenu(choice) {
         // Make sure to update command categories
